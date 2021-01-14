@@ -2,10 +2,15 @@ import React from 'react'
 import Navbar from '../components/navbar'
 import Footer from '../components/footer'
 
-export default function Layout() {
+/**
+ *
+ * @param {string, <any>} props.children
+ */
+export default function Layout({ children }) {
   return (
-    <div>
+    <div className="body-inner">
       <Navbar />
+      {children}
       <Footer />
     </div>
   )

@@ -1724,7 +1724,7 @@ Main Menu
 #mainMenu nav > ul > li .dropdown-menu > li:focus > span, #mainMenu nav > ul > li .dropdown-menu > li:active > a,
 #mainMenu nav > ul > li .dropdown-menu > li:active > span, #mainMenu nav > ul > li .dropdown-menu > li.hover-active > a,
 #mainMenu nav > ul > li .dropdown-menu > li.hover-active > span {
-  color: #2250fc;
+  color: #27bebe;
 }
 #mainMenu nav > ul > li .dropdown-menu.menu-last {
   right: 0;

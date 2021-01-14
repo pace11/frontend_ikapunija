@@ -26,13 +26,19 @@ export default function Footer() {
                     <div className="widget-title">Halaman</div>
                     <ul className="list">
                       <li>
-                        <a href="/#">Berita Alumni</a>
+                        <a href={`/berita-alumni`}>Berita Alumni</a>
                       </li>
                       <li>
-                        <a href="/#">Pengumuman</a>
+                        <a href={`/pengumuman`}>Pengumuman</a>
                       </li>
                       <li>
-                        <a href="/#">Agenda/Program</a>
+                        <a href={`/agenda`}>Agenda/Program</a>
+                      </li>
+                      <li>
+                        <a href={`/galeri`}>Galeri</a>
+                      </li>
+                      <li>
+                        <a href={`/cdc`}>CDC</a>
                       </li>
                     </ul>
                   </div>
@@ -42,7 +48,7 @@ export default function Footer() {
                     <div className="widget-title">Support</div>
                     <ul className="list">
                       <li>
-                        <a href="/#">Kontak Kami</a>
+                        <a href={`/kontak-kami`}>Kontak Kami</a>
                       </li>
                     </ul>
                   </div>

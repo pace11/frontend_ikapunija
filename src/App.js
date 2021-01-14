@@ -1,8 +1,6 @@
 import React from 'react'
-import Layout from './layout'
+import RouterWeb from './router-web'
 
-function App() {
-  return <Layout />
+export default function App() {
+  return <RouterWeb />
 }
-
-export default App
