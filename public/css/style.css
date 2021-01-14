@@ -4022,7 +4022,7 @@ del {
 a:not(.btn):not(.badge):hover, a:not(.btn):not(.badge):focus, a:not(.btn):not(.badge):active {
   text-decoration: none;
   outline: none;
-  color: #2250fc;
+  color: #27bebe;
 }
 a:not(.btn):not(.badge):not(.btn):not([href]):not([tabindex]) {
   color: #484848;
@@ -12157,7 +12157,7 @@ a.btn:not([href]):not([tabindex]).disabled {
   position: absolute;
   height: 2px;
   width: 100px;
-  background-color: #2250fc;
+  background-color: #27bebe;
   bottom: -30px;
   left: 0;
   right: 0;
