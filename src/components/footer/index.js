@@ -12,7 +12,11 @@ export default function Footer() {
                 <p className="mb-5">
                   Selamat datang di Website Resmi IKAPUNIJA
                 </p>
-                <img src="assets/img/pnj-logo.png" width="150px" />
+                <img
+                  src="assets/img/pnj-logo.png"
+                  width="150px"
+                  alt="logo-pnj"
+                />
               </div>
             </div>
             <div className="col-lg-7">
