@@ -45,15 +45,6 @@ export default function Navbar() {
                 </span>
               </form>
             </div>
-            <div className="header-extras">
-              <ul>
-                <li>
-                  <a id="btn-search" href="/#">
-                    <i className="icon-search"></i>
-                  </a>
-                </li>
-              </ul>
-            </div>
             <div id="mainMenu-trigger">
               <a className="lines-button x" href="/#">
                 <span className="lines"></span>
@@ -64,7 +55,7 @@ export default function Navbar() {
                 <nav>
                   <ul>
                     <li className="dropdown">
-                      <a href={false}>Tentang Kami</a>
+                      <a href="/#">Tentang Kami</a>
                       <ul className="dropdown-menu">
                         <li>
                           <a href={`/struktur-ikapunija`}>Struktur IKAPUNIJA</a>
@@ -97,6 +88,13 @@ export default function Navbar() {
                     </li>
                     <li>
                       <a href={`/kontak-kami`}>Kontak Kami</a>
+                    </li>
+                    <li>
+                      <a href={`/login`}>
+                        <button type="button" className="btn btn-sm">
+                          Login <i className="icon-user"></i>
+                        </button>
+                      </a>
                     </li>
                   </ul>
                 </nav>

@@ -11138,8 +11138,8 @@ a.btn:not([href]):not([tabindex]) {
   padding: 12px 18px;
   position: relative;
   text-transform: uppercase;
-  background-color: #2250fc;
-  border-color: #2250fc;
+  background-color: #27bebe;
+  border-color: #27bebe;
   border-width: 1px;
   border-style: solid;
   color: #ffffff;
@@ -11198,8 +11198,8 @@ a.btn:not([href]):not([tabindex]):hover,
 a.btn:not([href]):not([tabindex]):focus,
 a.btn:not([href]):not([tabindex]):not(:disabled):not(.disabled):active,
 a.btn:not([href]):not([tabindex]):not(:disabled):not(.disabled).active {
-  background-color: #0333e8;
-  border-color: #0333e8;
+  background-color: #1aaaaa;
+  border-color: #1aaaaa;
   color: #ffffff;
   text-decoration: none;
 }
