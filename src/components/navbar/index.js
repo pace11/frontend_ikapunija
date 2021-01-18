@@ -1,5 +1,7 @@
 import React from 'react'
 import { useLocation } from 'react-router-dom'
+import { isLoggedIn, userLoggedIn, userLoggedOut } from '../../utils/helpers'
+import data from '../../__json__'
 
 export default function Navbar() {
   let location = useLocation()
@@ -89,13 +91,36 @@ export default function Navbar() {
                     <li>
                       <a href={`/kontak-kami`}>Kontak Kami</a>
                     </li>
-                    <li>
-                      <a href={`/login`}>
-                        <button type="button" className="btn btn-sm">
-                          Login <i className="icon-user"></i>
-                        </button>
-                      </a>
-                    </li>
+
+                    {isLoggedIn() ? (
+                      <li className="dropdown">
+                        <a href="/#">
+                          <i className="icon-user"></i>
+                          {userLoggedIn().username}
+                        </a>
+                        <ul className="dropdown-menu">
+                          <li>
+                            <a href={`/profile`}>My Profile</a>
+                          </li>
+                          <li>
+                            <a
+                              className="text-danger"
+                              onClick={() => userLoggedOut()}
+                            >
+                              Logout
+                            </a>
+                          </li>
+                        </ul>
+                      </li>
+                    ) : (
+                      <li>
+                        <a href={`/login`}>
+                          <button type="button" className="btn btn-sm">
+                            <i className="icon-user"></i> Login
+                          </button>
+                        </a>
+                      </li>
+                    )}
                   </ul>
                 </nav>
               </div>
@@ -109,47 +134,27 @@ export default function Navbar() {
           className="inspiro-slider slider-fullscreen dots-creative"
           data-fade="true"
         >
-          <div
-            className="slide kenburns"
-            data-bg-image="assets/img/notgeneric_bg3.jpg"
-          >
-            <div className="bg-overlay"></div>
-            <div className="container">
-              <div className="slide-captions text-center text-light">
-                <h1>SELAMAT DATANG DI WEBSITE IKAPUNIJA</h1>
-                <p>
-                  Deserunt mollit ut laborum mollit magna. Do adipisicing quis
-                  ipsum labore. Sunt fugiat consequat tempor sunt consequat
-                  ullamco laborum aute.
-                </p>
-                <div>
-                  <a href="#welcome" className="btn scroll-to">
-                    Explore more
-                  </a>
+          {data &&
+            data.banner.map((item, idx) => (
+              <div
+                key={String(idx)}
+                className="slide kenburns"
+                data-bg-image={item.image_url}
+              >
+                <div className="bg-overlay"></div>
+                <div className="container">
+                  <div className="slide-captions text-center text-light">
+                    <h1>{item.title}</h1>
+                    <p>{item.description}</p>
+                    <div>
+                      <a href="#welcome" className="btn scroll-to">
+                        Explore more
+                      </a>
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
-          </div>
-          <div
-            className="slide kenburns"
-            data-bg-image="assets/img/notgeneric_bg3.jpg"
-          >
-            <div className="bg-overlay"></div>
-            <div className="container">
-              <div className="slide-captions text-center text-light">
-                <h1>WE ARE HIRING</h1>
-                <p>
-                  Non eu nostrud consectetur minim. Sit veniam sint sint
-                  proident ad duis culpa.
-                </p>
-                <div>
-                  <a href="#welcome" className="btn scroll-to">
-                    Explore more
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
+            ))}
         </div>
       ) : (
         <div>

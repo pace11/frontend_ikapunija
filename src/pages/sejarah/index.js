@@ -1,23 +1,51 @@
 import React from 'react'
-import Layout from '../../layout'
 
 export default function Sejarah() {
   return (
-    <Layout>
-      <section className="p-b-0">
+    <React.Fragment>
+      <section id="page-title">
         <div className="container">
-          <div
-            className="heading-text heading-section text-center m-b-40"
-            data-animate="fadeInUp"
-          >
-            <h2>SEJARAH</h2>
-            <span className="lead">
-              Create amam ipsum dolor sit amet, Beautiful nature, and rare
-              feathers!.
-            </span>
+          <div className="page-title">
+            <h1>Sejarah</h1>
+          </div>
+          <div className="breadcrumb">
+            <ul>
+              <li>
+                <a href="/">Beranda</a>
+              </li>
+              <li className="active">
+                <a href="/sejarah">Sejarah</a>
+              </li>
+            </ul>
           </div>
         </div>
       </section>
-    </Layout>
+      <section id="page-content">
+        <div className="container">
+          <div className="d-flex row team-members m-b-40 justify-content-center">
+            <div className="col-lg-6 col-md-6">
+              <p>
+                Fugiat amet ex nulla id amet proident dolore adipisicing elit.
+                Qui enim qui officia officia officia ex aute reprehenderit ea
+                veniam. Laborum aliquip est ea labore. Esse sit irure occaecat
+                quis labore esse sit duis.
+              </p>
+              <p>
+                Fugiat amet ex nulla id amet proident dolore adipisicing elit.
+                Qui enim qui officia officia officia ex aute reprehenderit ea
+                veniam. Laborum aliquip est ea labore. Esse sit irure occaecat
+                quis labore esse sit duis.
+              </p>
+              <p>
+                Fugiat amet ex nulla id amet proident dolore adipisicing elit.
+                Qui enim qui officia officia officia ex aute reprehenderit ea
+                veniam. Laborum aliquip est ea labore. Esse sit irure occaecat
+                quis labore esse sit duis.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </React.Fragment>
   )
 }
