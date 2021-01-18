@@ -29,20 +29,23 @@ export default function StrukturIkapunija() {
             <div className="col-lg-4 col-md-4">
               <div className="team-member">
                 <div className="team-image">
-                  <img src="https://inspirothemes.com/polo/images/team/7.jpg" />
+                  <img
+                    src="https://inspirothemes.com/polo/images/team/7.jpg"
+                    alt=""
+                  />
                 </div>
                 <div className="team-desc">
                   <h3>John Doe</h3>
                   <span>Ketua IKAPUNIJA</span>
                   <p>Motto ...</p>
                   <div className="align-center">
-                    <a className="btn btn-xs btn-slide btn-light" href="#">
+                    <a className="btn btn-xs btn-slide btn-light" href="/#">
                       <i className="fab fa-facebook-f"></i>
                       <span>Facebook</span>
                     </a>
                     <a
                       className="btn btn-xs btn-slide btn-light"
-                      href="#"
+                      href="/#"
                       data-width="100"
                     >
                       <i className="fab fa-twitter"></i>
@@ -50,7 +53,7 @@ export default function StrukturIkapunija() {
                     </a>
                     <a
                       className="btn btn-xs btn-slide btn-light"
-                      href="#"
+                      href="/#"
                       data-width="118"
                     >
                       <i className="fab fa-instagram"></i>
@@ -83,20 +86,23 @@ export default function StrukturIkapunija() {
             <div className="col-lg-3 col-md-3">
               <div className="team-member">
                 <div className="team-image">
-                  <img src="https://inspirothemes.com/polo/images/team/7.jpg" />
+                  <img
+                    src="https://inspirothemes.com/polo/images/team/7.jpg"
+                    alt=""
+                  />
                 </div>
                 <div className="team-desc">
                   <h3>John Doe</h3>
                   <span>Kepala Departemen Informasi</span>
                   <p>Motto ...</p>
                   <div className="align-center">
-                    <a className="btn btn-xs btn-slide btn-light" href="#">
+                    <a className="btn btn-xs btn-slide btn-light" href="/#">
                       <i className="fab fa-facebook-f"></i>
                       <span>Facebook</span>
                     </a>
                     <a
                       className="btn btn-xs btn-slide btn-light"
-                      href="#"
+                      href="/#"
                       data-width="100"
                     >
                       <i className="fab fa-twitter"></i>
@@ -104,7 +110,7 @@ export default function StrukturIkapunija() {
                     </a>
                     <a
                       className="btn btn-xs btn-slide btn-light"
-                      href="#"
+                      href="/#"
                       data-width="118"
                     >
                       <i className="fab fa-instagram"></i>
@@ -125,20 +131,23 @@ export default function StrukturIkapunija() {
             <div className="col-lg-3 col-md-3">
               <div className="team-member">
                 <div className="team-image">
-                  <img src="https://inspirothemes.com/polo/images/team/7.jpg" />
+                  <img
+                    src="https://inspirothemes.com/polo/images/team/7.jpg"
+                    alt=""
+                  />
                 </div>
                 <div className="team-desc">
                   <h3>John Doe</h3>
                   <span>Kepala Departemen Media Sosial</span>
                   <p>Motto ...</p>
                   <div className="align-center">
-                    <a className="btn btn-xs btn-slide btn-light" href="#">
+                    <a className="btn btn-xs btn-slide btn-light" href="/#">
                       <i className="fab fa-facebook-f"></i>
                       <span>Facebook</span>
                     </a>
                     <a
                       className="btn btn-xs btn-slide btn-light"
-                      href="#"
+                      href="/#"
                       data-width="100"
                     >
                       <i className="fab fa-twitter"></i>
@@ -146,7 +155,7 @@ export default function StrukturIkapunija() {
                     </a>
                     <a
                       className="btn btn-xs btn-slide btn-light"
-                      href="#"
+                      href="/#"
                       data-width="118"
                     >
                       <i className="fab fa-instagram"></i>
@@ -167,20 +176,23 @@ export default function StrukturIkapunija() {
             <div className="col-lg-3 col-md-3">
               <div className="team-member">
                 <div className="team-image">
-                  <img src="https://inspirothemes.com/polo/images/team/7.jpg" />
+                  <img
+                    src="https://inspirothemes.com/polo/images/team/7.jpg"
+                    alt=""
+                  />
                 </div>
                 <div className="team-desc">
                   <h3>John Doe</h3>
                   <span>Kepala Departemen Litbang</span>
                   <p>Motto ...</p>
                   <div className="align-center">
-                    <a className="btn btn-xs btn-slide btn-light" href="#">
+                    <a className="btn btn-xs btn-slide btn-light" href="/#">
                       <i className="fab fa-facebook-f"></i>
                       <span>Facebook</span>
                     </a>
                     <a
                       className="btn btn-xs btn-slide btn-light"
-                      href="#"
+                      href="/#"
                       data-width="100"
                     >
                       <i className="fab fa-twitter"></i>
@@ -188,7 +200,7 @@ export default function StrukturIkapunija() {
                     </a>
                     <a
                       className="btn btn-xs btn-slide btn-light"
-                      href="#"
+                      href="/#"
                       data-width="118"
                     >
                       <i className="fab fa-instagram"></i>
@@ -209,20 +221,23 @@ export default function StrukturIkapunija() {
             <div className="col-lg-3 col-md-3">
               <div className="team-member">
                 <div className="team-image">
-                  <img src="https://inspirothemes.com/polo/images/team/7.jpg" />
+                  <img
+                    src="https://inspirothemes.com/polo/images/team/7.jpg"
+                    alt=""
+                  />
                 </div>
                 <div className="team-desc">
                   <h3>John Doe</h3>
                   <span>Kepala Departemen Media Sosial</span>
                   <p>Motto ...</p>
                   <div className="align-center">
-                    <a className="btn btn-xs btn-slide btn-light" href="#">
+                    <a className="btn btn-xs btn-slide btn-light" href="/#">
                       <i className="fab fa-facebook-f"></i>
                       <span>Facebook</span>
                     </a>
                     <a
                       className="btn btn-xs btn-slide btn-light"
-                      href="#"
+                      href="/#"
                       data-width="100"
                     >
                       <i className="fab fa-twitter"></i>
@@ -230,7 +245,7 @@ export default function StrukturIkapunija() {
                     </a>
                     <a
                       className="btn btn-xs btn-slide btn-light"
-                      href="#"
+                      href="/#"
                       data-width="118"
                     >
                       <i className="fab fa-instagram"></i>
