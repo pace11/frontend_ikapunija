@@ -104,6 +104,7 @@ export default function Navbar() {
                           </li>
                           <li>
                             <a
+                              href="/#"
                               className="text-danger"
                               onClick={() => userLoggedOut()}
                             >
