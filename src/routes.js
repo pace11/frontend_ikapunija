@@ -14,6 +14,7 @@ import VisiMisi from './pages/visi-misi'
 import Sejarah from './pages/sejarah'
 import Login from './pages/login'
 import Register from './pages/register'
+import Profil from './pages/profil'
 
 const Routes = [
   { path: '/', exact: true, layout: Layout, component: Beranda },
@@ -39,6 +40,12 @@ const Routes = [
     exact: true,
     layout: Layout,
     component: StrukturDpa,
+  },
+  {
+    path: '/profil',
+    exact: true,
+    layout: Layout,
+    component: Profil,
   },
   { path: '/visi-misi', exact: true, layout: Layout, component: VisiMisi },
   { path: '/sejarah', exact: true, layout: Layout, component: Sejarah },

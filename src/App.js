@@ -1,6 +1,7 @@
 import React from 'react'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import routes from './routes'
+import 'react-toastify/dist/ReactToastify.css'
 
 export default function App() {
   return (

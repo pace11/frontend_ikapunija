@@ -100,7 +100,7 @@ export default function Navbar() {
                         </a>
                         <ul className="dropdown-menu">
                           <li>
-                            <a href={`/profile`}>My Profile</a>
+                            <a href={`/profil`}>Profile ku</a>
                           </li>
                           <li>
                             <a

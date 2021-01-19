@@ -47,5 +47,18 @@
 <script src="js/jquery.js"></script>
 <script src="js/plugins.js"></script>
 <script src="js/functions.js"></script>
+<script src="plugins/validate/validate.min.js"></script>
+<link href="plugins/jquery-steps/jquery.steps.css" rel="stylesheet">
+<script src="plugins/jquery-steps/jquery.steps.min.js"></script>
+<script>
+  $('#wizard1').steps({
+    headerTag: 'h3',
+    bodyTag: '.wizard-content',
+    autoFocus: true,
+    enableAllSteps: true,
+    titleTemplate: '<span class="number">#index#</span><span class="title">#title#</span>',
+  });
+  $('.wizard').find(".actions").css('display', 'none');
+</script>
 
 </html>
