@@ -1,5 +1,5 @@
 import React from 'react'
-// import { userLoggedIn } from '../../utils/helpers'
+import { userLoggedIn } from '../../utils/helpers'
 
 export default function Profil() {
   const [listRegion, setListRegion] = React.useState()
@@ -52,6 +52,7 @@ export default function Profil() {
                           type="text"
                           placeholder="Nama User"
                           className="form-control"
+                          defaultValue={userLoggedIn().username}
                         />
                         {/* <div id="txtName-error" className="is-invalid">
                         This field is required.
