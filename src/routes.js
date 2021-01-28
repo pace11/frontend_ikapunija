@@ -1,4 +1,5 @@
 import Layout from './layout'
+import LayoutSso from './layout/sso'
 
 // Route Views
 import Beranda from './pages/beranda'
@@ -13,6 +14,8 @@ import StrukturDpa from './pages/struktur-dpa'
 import VisiMisi from './pages/visi-misi'
 import Sejarah from './pages/sejarah'
 import Login from './pages/login'
+import LoginSso from './pages/login'
+import RegisterSso from './pages/register'
 import Register from './pages/register'
 import Profil from './pages/profil'
 
@@ -49,8 +52,15 @@ const Routes = [
   },
   { path: '/visi-misi', exact: true, layout: Layout, component: VisiMisi },
   { path: '/sejarah', exact: true, layout: Layout, component: Sejarah },
-  { path: '/login', exact: true, layout: Layout, component: Login },
-  { path: '/register', exact: true, layout: Layout, component: Register },
+  { path: '/login-old', exact: true, layout: Layout, component: Login },
+  { path: '/register-old', exact: true, layout: Layout, component: Register },
+  { path: '/login', exact: true, layout: LayoutSso, component: LoginSso },
+  {
+    path: '/register',
+    exact: true,
+    layout: LayoutSso,
+    component: RegisterSso,
+  },
 ]
 
 export default Routes

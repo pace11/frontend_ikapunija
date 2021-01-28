@@ -1,10 +1,20 @@
 import React from 'react'
 import { useLocation } from 'react-router-dom'
+// import { ListBanner } from '../../api'
 import { isLoggedIn, userLoggedIn, userLoggedOut } from '../../utils/helpers'
+// import { imageBanner } from '../../const/env'
 import data from '../../__json__'
 
 export default function Navbar() {
+  // const [dataBanner, setDataBanner] = React.useState()
   let location = useLocation()
+
+  // React.useEffect(() => {
+  //   ListBanner().then((res) => {
+
+  //     console.log('datanya ===>', res)
+  //   })
+  // })
 
   return (
     <React.Fragment>
@@ -18,8 +28,20 @@ export default function Navbar() {
           <div className="container">
             <div id="logo">
               <a href={`/`}>
-                <span className="logo-default">IKAPUNIJA</span>
-                <span className="logo-dark">IKAPUNIJA</span>
+                <span className="logo-default">
+                  <img
+                    src={require('../../assets/img/logo-ika-hitam.png').default}
+                    alt="logo-hitam"
+                    width="250px"
+                  />
+                </span>
+                <span className="logo-dark">
+                  <img
+                    src={require('../../assets/img/logo-ika-putih.png').default}
+                    alt="logo-putih"
+                    width="250px"
+                  />
+                </span>
               </a>
             </div>
             <div id="search">

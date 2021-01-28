@@ -1,98 +1,39 @@
 import React from 'react'
-import Cookies from 'js-cookie'
 
-export default function Login() {
-  const [data, setData] = React.useState({
-    username: '',
-    password: '',
-  })
-
-  const [invalid, setInvalid] = React.useState({
-    username: false,
-    password: false,
-  })
-
-  const HandleChange = (value, key) => {
-    setData({
-      ...data,
-      [key]: value,
-    })
-  }
-
-  const HandleKeyUp = (value, key) => {
-    setInvalid({
-      ...invalid,
-      [key]: value === '' ? true : false,
-    })
-  }
-
-  const HandleSubmit = () => {
-    if (data.username !== '' && data.password !== '') {
-      Cookies.set('user_data_username', JSON.stringify(data.username))
-      Cookies.set('user_logged_in', true)
-      window.location.href = '/'
-    }
-  }
-
+export default function LoginSso() {
   return (
-    <section>
-      <div className="container">
+    <div className="container">
+      <div>
+        <div className="text-center mb-3">
+          <a href="/" className="logo">
+            <img
+              src={require('../../assets/img/logo-ika-putih.png').default}
+              alt="ikapunija logo"
+              width="300px"
+            />
+          </a>
+        </div>
         <div className="row">
-          <div className="col-lg-6 col-md-12">
-            <div className="panel ">
-              <div className="panel-body">
-                <h2>Login</h2>
-                <div className="form-group">
-                  <label>Username</label>
-                  <input
-                    type="text"
-                    placeholder="Enter your username ..."
-                    className={`form-control ${
-                      invalid.username ? 'is-invalid' : ''
-                    }`}
-                    value={data.username}
-                    onChange={(e) => HandleChange(e.target.value, 'username')}
-                    onKeyUp={(e) => HandleKeyUp(e.target.value, 'username')}
-                  />
-                  {invalid.username && (
-                    <div id="txtName-error" className="is-invalid">
-                      This field is required.
-                    </div>
-                  )}
-                </div>
-                <div className="form-group m-b-5">
-                  <label>Password</label>
-                  <input
-                    type="password"
-                    placeholder="Enter your password ..."
-                    className={`form-control ${
-                      invalid.password ? 'is-invalid' : ''
-                    }`}
-                    value={data.password}
-                    onChange={(e) => HandleChange(e.target.value, 'password')}
-                    onKeyUp={(e) => HandleKeyUp(e.target.value, 'password')}
-                  />
-                  {invalid.password && (
-                    <div id="txtName-error" className="is-invalid">
-                      This field is required.
-                    </div>
-                  )}
-                </div>
-                <div className="form-group form-inline m-b-10 ">
-                  <p className="small">
-                    <a href="/#">Lupa Kata Sandi</a>
-                  </p>
-                </div>
-                <div className="form-group">
-                  <button
-                    className="btn"
-                    type="button"
-                    onClick={() => HandleSubmit()}
-                  >
-                    Login
-                  </button>
-                </div>
-              </div>
+          <div className="col-lg-5 center p-50 background-white b-r-6">
+            <h3 className="text-center">LOGIN</h3>
+            <div className="form-group">
+              <label>Username</label>
+              <input
+                type="text"
+                className="form-control"
+                placeholder="Masukkan Username ..."
+              />
+            </div>
+            <div className="form-group mb-3">
+              <label>Password</label>
+              <input
+                type="password"
+                className="form-control"
+                placeholder="Masukkan Password ..."
+              />
+            </div>
+            <div className="text-left form-group">
+              <button className="btn btn-block">Login</button>
             </div>
             <p className="small">
               Belum punya akun? <a href={`/register`}>Registrasi Sekarang</a>
@@ -100,6 +41,6 @@ export default function Login() {
           </div>
         </div>
       </div>
-    </section>
+    </div>
   )
 }
