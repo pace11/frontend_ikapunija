@@ -1,5 +1,5 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/ikapunij/adminWeb/
+    - export DEPLOYPATH=/home/ikapunij/public_html/
     - yes | cp -rf build/* $DEPLOYPATH
