@@ -8,8 +8,14 @@
 # testing
 /coverage
 
-# production
-/build
+# disable all dir
+/public
+/src
+.env
+.prettierrc
+package-lock.json
+package.json
+yarn.lock
 
 # misc
 .DS_Store
