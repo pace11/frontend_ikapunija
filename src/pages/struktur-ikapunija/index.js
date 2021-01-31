@@ -1,12 +1,17 @@
 import React from 'react'
+import data from '../../__json__'
 
 export default function StrukturIkapunija() {
+  const { struktur_ikapunija } = data
+
   return (
     <React.Fragment>
       <section id="page-title">
         <div className="container">
           <div className="page-title">
-            <h1>Struktur IKAPUNIJA</h1>
+            <h1>
+              <i className="fas fa-users"></i> Struktur IKAPUNIJA
+            </h1>
           </div>
           <div className="breadcrumb">
             <ul>
@@ -14,258 +19,78 @@ export default function StrukturIkapunija() {
                 <a href="/">Beranda</a>
               </li>
               <li className="active">
-                <a href="/struktur-ikapunija">Struktur IKAPUNIJA</a>
+                <a href="/tentang-kami/struktur-ikapunija">
+                  {' '}
+                  <i class="fas fa-users"></i> Struktur IKAPUNIJA
+                </a>
               </li>
             </ul>
           </div>
         </div>
       </section>
-      <section id="page-content">
-        <div className="container">
-          <div className="heading-text heading-section text-center">
-            <h2>Ketua</h2>
-          </div>
-          <div className="d-flex row team-members m-b-40 justify-content-center">
-            <div className="col-lg-4 col-md-4">
-              <div className="team-member">
-                <div className="team-image">
-                  <img
-                    src="https://inspirothemes.com/polo/images/team/7.jpg"
-                    alt=""
-                  />
-                </div>
-                <div className="team-desc">
-                  <h3>John Doe</h3>
-                  <span>Ketua IKAPUNIJA</span>
-                  <p>Motto ...</p>
-                  <div className="align-center">
-                    <a className="btn btn-xs btn-slide btn-light" href="/#">
-                      <i className="fab fa-facebook-f"></i>
-                      <span>Facebook</span>
-                    </a>
-                    <a
-                      className="btn btn-xs btn-slide btn-light"
-                      href="/#"
-                      data-width="100"
-                    >
-                      <i className="fab fa-twitter"></i>
-                      <span>Twitter</span>
-                    </a>
-                    <a
-                      className="btn btn-xs btn-slide btn-light"
-                      href="/#"
-                      data-width="118"
-                    >
-                      <i className="fab fa-instagram"></i>
-                      <span>Instagram</span>
-                    </a>
-                    <a
-                      className="btn btn-xs btn-slide btn-light"
-                      href="mailto:#"
-                      data-width="80"
-                    >
-                      <i className="icon-mail"></i>
-                      <span>Mail</span>
-                    </a>
+      {struktur_ikapunija && (
+        <section id="page-content">
+          <div className="container">
+            <div className="heading-text heading-section text-center">
+              <h2>Ketua Umum</h2>
+            </div>
+            <div className="d-flex row team-members m-b-40 justify-content-center">
+              <div className="col-lg-4 col-md-4">
+                <div className="team-member">
+                  <div className="team-image">
+                    <img src={struktur_ikapunija.layer_1[0].img_url} alt="" />
+                  </div>
+                  <div className="team-desc">
+                    <h3>{struktur_ikapunija.layer_1[0].name}</h3>
+                    <div className="align-center">
+                      <a
+                        className="btn btn-xs btn-slide btn-light"
+                        href="/#"
+                        data-width="118"
+                      >
+                        <i className="fab fa-instagram"></i>
+                        <span>Instagram</span>
+                      </a>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-        <hr className="space" />
-        <div className="seperator">
-          <i className="fa fa-chevron-down"></i>
-        </div>
-        <hr className="space" />
-        <div className="container">
-          <div className="heading-text heading-section text-center">
-            <h2>Departemen</h2>
+          <div className="seperator">
+            <i className="fa fa-chevron-down"></i>
           </div>
-          <div className="row team-members m-b-40">
-            <div className="col-lg-3 col-md-3">
-              <div className="team-member">
-                <div className="team-image">
-                  <img
-                    src="https://inspirothemes.com/polo/images/team/7.jpg"
-                    alt=""
-                  />
-                </div>
-                <div className="team-desc">
-                  <h3>John Doe</h3>
-                  <span>Kepala Departemen Informasi</span>
-                  <p>Motto ...</p>
-                  <div className="align-center">
-                    <a className="btn btn-xs btn-slide btn-light" href="/#">
-                      <i className="fab fa-facebook-f"></i>
-                      <span>Facebook</span>
-                    </a>
-                    <a
-                      className="btn btn-xs btn-slide btn-light"
-                      href="/#"
-                      data-width="100"
-                    >
-                      <i className="fab fa-twitter"></i>
-                      <span>Twitter</span>
-                    </a>
-                    <a
-                      className="btn btn-xs btn-slide btn-light"
-                      href="/#"
-                      data-width="118"
-                    >
-                      <i className="fab fa-instagram"></i>
-                      <span>Instagram</span>
-                    </a>
-                    <a
-                      className="btn btn-xs btn-slide btn-light"
-                      href="mailto:#"
-                      data-width="80"
-                    >
-                      <i className="icon-mail"></i>
-                      <span>Mail</span>
-                    </a>
+          <hr className="space" />
+          <div className="container">
+            <div className="row team-members m-b-40">
+              {struktur_ikapunija.layer_2 &&
+                struktur_ikapunija.layer_2.map((item, idx) => (
+                  <div className="col-lg-4 col-md-4 col-xs-12">
+                    <div className="team-member">
+                      <div className="team-image">
+                        <img src={item.img_url} alt="" />
+                      </div>
+                      <div className="team-desc">
+                        <h3>{item.name}</h3>
+                        <p>{item.title}</p>
+                        <div className="align-center">
+                          <a
+                            className="btn btn-xs btn-slide btn-light"
+                            href="/#"
+                            data-width="118"
+                          >
+                            <i className="fab fa-instagram"></i>
+                            <span>Instagram</span>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </div>
-            </div>
-            <div className="col-lg-3 col-md-3">
-              <div className="team-member">
-                <div className="team-image">
-                  <img
-                    src="https://inspirothemes.com/polo/images/team/7.jpg"
-                    alt=""
-                  />
-                </div>
-                <div className="team-desc">
-                  <h3>John Doe</h3>
-                  <span>Kepala Departemen Media Sosial</span>
-                  <p>Motto ...</p>
-                  <div className="align-center">
-                    <a className="btn btn-xs btn-slide btn-light" href="/#">
-                      <i className="fab fa-facebook-f"></i>
-                      <span>Facebook</span>
-                    </a>
-                    <a
-                      className="btn btn-xs btn-slide btn-light"
-                      href="/#"
-                      data-width="100"
-                    >
-                      <i className="fab fa-twitter"></i>
-                      <span>Twitter</span>
-                    </a>
-                    <a
-                      className="btn btn-xs btn-slide btn-light"
-                      href="/#"
-                      data-width="118"
-                    >
-                      <i className="fab fa-instagram"></i>
-                      <span>Instagram</span>
-                    </a>
-                    <a
-                      className="btn btn-xs btn-slide btn-light"
-                      href="mailto:#"
-                      data-width="80"
-                    >
-                      <i className="icon-mail"></i>
-                      <span>Mail</span>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="col-lg-3 col-md-3">
-              <div className="team-member">
-                <div className="team-image">
-                  <img
-                    src="https://inspirothemes.com/polo/images/team/7.jpg"
-                    alt=""
-                  />
-                </div>
-                <div className="team-desc">
-                  <h3>John Doe</h3>
-                  <span>Kepala Departemen Litbang</span>
-                  <p>Motto ...</p>
-                  <div className="align-center">
-                    <a className="btn btn-xs btn-slide btn-light" href="/#">
-                      <i className="fab fa-facebook-f"></i>
-                      <span>Facebook</span>
-                    </a>
-                    <a
-                      className="btn btn-xs btn-slide btn-light"
-                      href="/#"
-                      data-width="100"
-                    >
-                      <i className="fab fa-twitter"></i>
-                      <span>Twitter</span>
-                    </a>
-                    <a
-                      className="btn btn-xs btn-slide btn-light"
-                      href="/#"
-                      data-width="118"
-                    >
-                      <i className="fab fa-instagram"></i>
-                      <span>Instagram</span>
-                    </a>
-                    <a
-                      className="btn btn-xs btn-slide btn-light"
-                      href="mailto:#"
-                      data-width="80"
-                    >
-                      <i className="icon-mail"></i>
-                      <span>Mail</span>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="col-lg-3 col-md-3">
-              <div className="team-member">
-                <div className="team-image">
-                  <img
-                    src="https://inspirothemes.com/polo/images/team/7.jpg"
-                    alt=""
-                  />
-                </div>
-                <div className="team-desc">
-                  <h3>John Doe</h3>
-                  <span>Kepala Departemen Media Sosial</span>
-                  <p>Motto ...</p>
-                  <div className="align-center">
-                    <a className="btn btn-xs btn-slide btn-light" href="/#">
-                      <i className="fab fa-facebook-f"></i>
-                      <span>Facebook</span>
-                    </a>
-                    <a
-                      className="btn btn-xs btn-slide btn-light"
-                      href="/#"
-                      data-width="100"
-                    >
-                      <i className="fab fa-twitter"></i>
-                      <span>Twitter</span>
-                    </a>
-                    <a
-                      className="btn btn-xs btn-slide btn-light"
-                      href="/#"
-                      data-width="118"
-                    >
-                      <i className="fab fa-instagram"></i>
-                      <span>Instagram</span>
-                    </a>
-                    <a
-                      className="btn btn-xs btn-slide btn-light"
-                      href="mailto:#"
-                      data-width="80"
-                    >
-                      <i className="icon-mail"></i>
-                      <span>Mail</span>
-                    </a>
-                  </div>
-                </div>
-              </div>
+                ))}
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
     </React.Fragment>
   )
 }

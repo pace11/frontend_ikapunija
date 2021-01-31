@@ -9,12 +9,10 @@ export default function Footer() {
             <div className="col-lg-5">
               <div className="widget">
                 <div className="widget-title">IKAPUNIJA</div>
-                <p className="mb-5">
-                  Selamat datang di Website Resmi IKAPUNIJA
-                </p>
+                <p>Selamat datang di Website Resmi IKAPUNIJA</p>
                 <img
-                  src="assets/img/pnj-logo.png"
-                  width="150px"
+                  src={require('../../assets/img/logo-ika-port.png').default}
+                  width="200px"
                   alt="logo-pnj"
                 />
               </div>

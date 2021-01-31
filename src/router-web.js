@@ -19,6 +19,7 @@ export default function RouterWeb() {
     <BrowserRouter>
       <Route path="/" exact component={Beranda} />
       <Route path="/berita-alumni" exact component={BeritaAlumni} />
+      <Route path="/berita-alumni/:id" exact component={BeritaAlumni} />
       <Route path="/pengumuman" exact component={Pengumuman} />
       <Route path="/agenda" exact component={Agenda} />
       <Route path="/galeri" exact component={Galeri} />

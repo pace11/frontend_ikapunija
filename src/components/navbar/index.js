@@ -1,23 +1,39 @@
 import React from 'react'
-import { useLocation } from 'react-router-dom'
-// import { ListBanner } from '../../api'
+import { useRouteMatch } from 'react-router-dom'
 import { isLoggedIn, userLoggedIn, userLoggedOut } from '../../utils/helpers'
-// import { imageBanner } from '../../const/env'
-import data from '../../__json__'
+import { ListBanner } from '../../api'
+import NavbarList from './navbar-list'
 
-export default function Navbar() {
-  // const [dataBanner, setDataBanner] = React.useState()
-  let location = useLocation()
+export default function Navbar({ location }) {
+  let { url } = useRouteMatch()
+  const [banner, setBanner] = React.useState()
 
-  // React.useEffect(() => {
-  //   ListBanner().then((res) => {
-
-  //     console.log('datanya ===>', res)
-  //   })
-  // })
+  React.useEffect(() => {
+    const BANNER_LOCAL = window.localStorage.getItem('list_banner')
+    async function FetchListBanner() {
+      if (BANNER_LOCAL && BANNER_LOCAL !== 'undefined') {
+        setBanner(JSON.parse(BANNER_LOCAL))
+        await ListBanner().then((res) => {
+          if (JSON.stringify(res) === BANNER_LOCAL) {
+            setBanner(JSON.parse(BANNER_LOCAL))
+          } else {
+            window.localStorage.setItem('list_banner', JSON.stringify(res))
+            window.location.href = '/'
+          }
+        })
+      } else {
+        await ListBanner().then((res) => {
+          window.localStorage.setItem('list_banner', JSON.stringify(res))
+          setBanner(res)
+        })
+        window.location.href = '/'
+      }
+    }
+    FetchListBanner()
+  }, [])
 
   return (
-    <React.Fragment>
+    <div>
       <header
         id="header"
         className="dark submenu-light"
@@ -78,42 +94,29 @@ export default function Navbar() {
               <div className="container">
                 <nav>
                   <ul>
-                    <li className="dropdown">
-                      <a href="/#">Tentang Kami</a>
-                      <ul className="dropdown-menu">
-                        <li>
-                          <a href={`/struktur-ikapunija`}>Struktur IKAPUNIJA</a>
+                    {NavbarList &&
+                      NavbarList.map((item, idx) => (
+                        <li
+                          className={item.subTitle ? `dropdown` : ``}
+                          key={String(idx)}
+                        >
+                          <a
+                            href={item.link}
+                            className={url.includes(item.slug) ? `menu` : ``}
+                          >
+                            {item.title}
+                          </a>
+                          {item.subTitle && (
+                            <ul className="dropdown-menu">
+                              {item.subTitle.map((items, key) => (
+                                <li key={String(key)}>
+                                  <a href={items.link}>{items.title}</a>
+                                </li>
+                              ))}
+                            </ul>
+                          )}
                         </li>
-                        <li>
-                          <a href={`/struktur-dpa`}>Sktruktur DPA</a>
-                        </li>
-                        <li>
-                          <a href={`/visi-misi`}>Visi dan Misi</a>
-                        </li>
-                        <li>
-                          <a href={`/sejarah`}>Sejarah</a>
-                        </li>
-                      </ul>
-                    </li>
-                    <li>
-                      <a href={`/berita-alumni`}>Berita Alumni</a>
-                    </li>
-                    <li>
-                      <a href={`/pengumuman`}>Pengumuman</a>
-                    </li>
-                    <li>
-                      <a href={`/agenda`}>Agenda/Program</a>
-                    </li>
-                    <li>
-                      <a href={`/galeri`}>Galeri</a>
-                    </li>
-                    <li>
-                      <a href={`/cdc`}>CDC</a>
-                    </li>
-                    <li>
-                      <a href={`/kontak-kami`}>Kontak Kami</a>
-                    </li>
-
+                      ))}
                     {isLoggedIn() ? (
                       <li className="dropdown">
                         <a href="/#">
@@ -139,7 +142,7 @@ export default function Navbar() {
                       <li>
                         <a href={`/login`}>
                           <button type="button" className="btn btn-sm">
-                            <i className="icon-user"></i> Login
+                            Login
                           </button>
                         </a>
                       </li>
@@ -151,42 +154,79 @@ export default function Navbar() {
           </div>
         </div>
       </header>
-      {location.pathname === '/' ? (
-        <div
-          id="slider"
-          className="inspiro-slider slider-fullscreen dots-creative"
-          data-fade="true"
-        >
-          {data &&
-            data.banner.map((item, idx) => (
-              <div
-                key={String(idx)}
-                className="slide kenburns"
-                data-bg-image={item.image_url}
-              >
-                <div className="bg-overlay"></div>
-                <div className="container">
-                  <div className="slide-captions text-center text-light">
-                    <h1>{item.title}</h1>
-                    <p>{item.description}</p>
-                    <div>
-                      <a href="#welcome" className="btn scroll-to">
-                        Explore more
-                      </a>
+      {location && location.pathname === '/' ? (
+        <React.Fragment>
+          <div
+            id="slider"
+            className="inspiro-slider slider-fullscreen dots-creative"
+            data-fade="true"
+          >
+            {banner &&
+              banner.map((item, idx) => (
+                <div
+                  key={idx}
+                  className="slide kenburns"
+                  data-bg-image={item.banner_img_url}
+                >
+                  <div className="bg-overlay"></div>
+                  <div className="container">
+                    <div className="slide-captions text-center text-light">
+                      <h1>{item.banner_title}</h1>
+                      <p>-- deskripsi --</p>
+                      <div>
+                        <a href="/#" className="btn scroll-to">
+                          Explore more
+                        </a>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            ))}
-        </div>
+              ))}
+          </div>
+        </React.Fragment>
       ) : (
         <div>
           <div
             className="bg-overlay"
-            style={{ width: '100%', height: '80px', backgroundColor: '#000' }}
+            style={{
+              width: '100%',
+              height: '80px',
+              backgroundColor: '#000',
+            }}
           ></div>
         </div>
       )}
-    </React.Fragment>
+      <style>
+        {`
+          .menu {
+            transition: all 2s ease;
+          }
+          .menu::after {
+            position: absolute;
+            content: '';
+            width: 100%;
+            height: 3px;
+            left: 0;
+            right: 0;
+            bottom:0;
+            background-color: #27bebe !important;
+            border-radius: 15px;
+          }
+          .menu::before {
+            position: absolute;
+            content: '';
+            width: 100%;
+            height: 100%;
+            left: 0;
+            right: 0;
+            top:0;
+            background-color: #27bebe !important;
+            opacity: 0.2;
+            border-radius: 5px 5px 0px 0px;
+            z-index: -1;
+          }
+        `}
+      </style>
+    </div>
   )
 }

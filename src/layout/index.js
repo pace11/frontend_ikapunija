@@ -6,11 +6,11 @@ import Footer from '../components/footer'
  *
  * @param {string, <any>} props.children
  */
-export default function Layout({ children }) {
+export default function Layout(props) {
   return (
     <div className="body-inner">
-      <Navbar />
-      {children}
+      <Navbar {...props} />
+      {props.children}
       <Footer />
     </div>
   )

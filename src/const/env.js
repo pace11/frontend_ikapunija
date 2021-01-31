@@ -1,4 +1,4 @@
-const urlApi = 'https://dev.aflowz.com/ikapunija/server/api',
+const urlApi = 'https://admin.ikapunija.com/api',
   apiToken = 'aWthcHVuaWphMjAyMXhhZmxvd3pAMTIxMzEwIV89',
   imageAgenda = 'https://dev.aflowz.com/ikapunija/server/asset_image/agenda',
   imageBanner = 'https://dev.aflowz.com/ikapunija/server/asset_image/banner',

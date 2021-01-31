@@ -1,92 +1,89 @@
 import React from 'react'
-import data from '../../__json__'
+import { useRouteMatch } from 'react-router-dom'
+import { ListAgenda } from '../../api'
 
 export default function Agenda() {
+  let { url } = useRouteMatch()
+  const [data, setData] = React.useState()
+  React.useEffect(() => {
+    async function FetchListAgenda() {
+      await ListAgenda().then((res) => {
+        setData(res)
+      })
+    }
+    FetchListAgenda()
+  }, [])
+
   return (
     <section id="page-content" className="sidebar-right">
       <div className="container">
         <div className="row">
           <div className="content col-lg-12 col-md-12 col-xs-12">
             <div className="page-title">
-              <h1>Agenda/Program</h1>
+              <h1>
+                <i className="far fa-calendar-alt"></i> Agenda & Program
+              </h1>
               <div className="breadcrumb float-left">
                 <ul>
                   <li>
                     <a href="/">Beranda</a>
                   </li>
                   <li className="active">
-                    <a href="/pengumuman">Agenda/Program</a>
+                    <a href="/agenda-program">
+                      <i className="far fa-calendar-alt"></i> Agenda & Program
+                    </a>
                   </li>
                 </ul>
               </div>
             </div>
-            <div id="blog" className="post-thumbnails">
-              {data &&
-                data.agenda_program.map((item, idx) => (
-                  <div key={String(idx)} className="post-item">
-                    <div className="post-item-wrap">
-                      <div className="post-image">
-                        <a href="/#">
-                          <img alt="" src={item.image_url_post} />
-                        </a>
+          </div>
+        </div>
+        <div className="row">
+          <div id="blog" className="post-3-columns">
+            {data &&
+              data.map((item, idx) => (
+                <div key={String(idx)} className="post-item">
+                  <div className="post-item-wrap">
+                    <div className="post-image">
+                      <a href={`${url}/detail/${item.agenda_id}`}>
+                        <img
+                          alt={item.agenda_img_url}
+                          src={item.agenda_img_url}
+                          onError={(e) => {
+                            e.target.src = 'https://via.placeholder.com/150'
+                          }}
+                          style={{
+                            padding: '10px',
+                          }}
+                        />
+                      </a>
+                      {item.agenda_category && (
                         <span className="post-meta-category">
-                          <a href="/#">{item.tag_post}</a>
+                          <a href="/#">{item.agenda_category.nama}</a>
                         </span>
-                      </div>
-                      <div className="post-item-description">
-                        <span className="post-meta-date">
-                          <i className="fa fa-calendar-o"></i>
-                          {item.date_post}
-                        </span>
-                        <h2>
-                          <a href="/#">{item.title_post}</a>
-                        </h2>
-                        <p>{item.description_post}</p>
-                        <a href="/#" className="item-link">
-                          Read More <i className="icon-chevron-right"></i>
+                      )}
+                    </div>
+                    <div className="post-item-description">
+                      <span className="post-meta-date">
+                        <i className="fa fa-calendar-o"></i>
+                        {new Date(item.agenda_date).toDateString()}
+                      </span>
+                      <h2>
+                        <a href={`${url}/detail/${item.agenda_id}`}>
+                          {item.agenda_title}
                         </a>
-                      </div>
+                      </h2>
+                      <p>{item.agenda_desc}</p>
+                      <a
+                        href={`${url}/detail/${item.agenda_id}`}
+                        className="item-link"
+                      >
+                        Read More <i className="icon-chevron-right"></i>
+                      </a>
                     </div>
                   </div>
-                ))}
-              <ul className="pagination">
-                <li className="page-item">
-                  <a className="page-link" href="/#">
-                    <i className="fa fa-angle-left"></i>
-                  </a>
-                </li>
-                <li className="page-item">
-                  <a className="page-link" href="/#">
-                    1
-                  </a>
-                </li>
-                <li className="page-item">
-                  <a className="page-link" href="/#">
-                    2
-                  </a>
-                </li>
-                <li className="page-item active">
-                  <a className="page-link" href="/#">
-                    3
-                  </a>
-                </li>
-                <li className="page-item">
-                  <a className="page-link" href="/#">
-                    4
-                  </a>
-                </li>
-                <li className="page-item">
-                  <a className="page-link" href="/#">
-                    5
-                  </a>
-                </li>
-                <li className="page-item">
-                  <a className="page-link" href="/#">
-                    <i className="fa fa-angle-right"></i>
-                  </a>
-                </li>
-              </ul>
-            </div>
+                </div>
+              ))}
           </div>
         </div>
       </div>
