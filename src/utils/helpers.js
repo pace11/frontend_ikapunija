@@ -1,4 +1,5 @@
 import Cookies from 'js-cookie'
+import { PostLogout } from '../api'
 
 export const isLoggedIn = () => {
   const isLogin = Cookies.get('user_logged_in')
@@ -13,7 +14,18 @@ export const userLoggedIn = () => {
 }
 
 export const userLoggedOut = () => {
-  Cookies.remove('user_data_username')
-  Cookies.remove('user_logged_in')
-  window.location.href = '/'
+  const username = JSON.parse(Cookies.get('user_data_username'))
+  const token = JSON.parse(Cookies.get('user_data_token'))
+  PostLogout({
+    token: token,
+    username: username,
+  }).then((res) => {
+    const { error } = res
+    if (!error) {
+      Cookies.remove('user_data_username')
+      Cookies.remove('user_data_token')
+      Cookies.remove('user_logged_in')
+      window.location.href = '/'
+    }
+  })
 }

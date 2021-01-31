@@ -11,8 +11,9 @@ export default function BeritaAlumni() {
   React.useEffect(() => {
     async function FetchBeritaAlumni() {
       await ListBeritaAlumni().then((res) => {
-        setData(res)
-        setIsLoading(false)
+        const { data, error } = res
+        setData(data)
+        setIsLoading(error)
       })
     }
     FetchBeritaAlumni()
@@ -22,10 +23,10 @@ export default function BeritaAlumni() {
     <section id="page-content">
       <div className="container">
         <div className="row">
-          <div className="content col-lg-9 col-md-9">
+          <div className="content col-lg-12 col-md-12 col-xs-12">
             <div className="page-title">
               <h1>
-                <i class="far fa-file-alt"></i> Berita Alumni
+                <i className="far fa-file-alt"></i> Berita Alumni
               </h1>
               <div className="breadcrumb float-left">
                 <ul>
@@ -34,7 +35,7 @@ export default function BeritaAlumni() {
                   </li>
                   <li className="active">
                     <a href="/berita-alumni">
-                      <i class="far fa-file-alt"></i> Berita Alumni
+                      <i className="far fa-file-alt"></i> Berita Alumni
                     </a>
                   </li>
                 </ul>
@@ -46,7 +47,7 @@ export default function BeritaAlumni() {
           <LoadingComponent />
         ) : (
           <div className="row">
-            <div className="content col-lg-9 col-md-9">
+            <div className="col-lg-12 col-md-12 col-xs-12">
               <div id="blog" className="post-thumbnails">
                 {data &&
                   data.map((item, idx) => (
@@ -57,6 +58,9 @@ export default function BeritaAlumni() {
                             <img
                               alt={`${item.news_img_url}`}
                               src={`${item.news_img_url}`}
+                              onError={(e) => {
+                                e.target.src = 'https://via.placeholder.com/150'
+                              }}
                             />
                           </a>
                           {item.news_category && (

@@ -1670,7 +1670,7 @@ Main Menu
 #mainMenu nav > ul > li .dropdown-menu {
   background-position: right bottom;
   background-repeat: no-repeat;
-  min-width: 230px;
+  min-width: 200px;
   top: auto;
   background-color: #ffffff;
   border: 0;

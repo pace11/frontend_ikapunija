@@ -6,4 +6,14 @@ const WEB_HEADERS_GET = {
   offset: '0',
 }
 
-export { WEB_HEADERS_GET }
+const WEB_HEADERS_POST = {
+  apiToken: apiToken,
+  mode: 'cors',
+}
+
+const WEB_HEADERS_POST_LOGOUT = {
+  apiToken: apiToken,
+  type: 'user',
+}
+
+export { WEB_HEADERS_GET, WEB_HEADERS_POST, WEB_HEADERS_POST_LOGOUT }

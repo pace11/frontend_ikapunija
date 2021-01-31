@@ -1,18 +1,20 @@
+import { Redirect } from 'react-router-dom'
+import { isLoggedIn } from './utils/helpers'
 import Layout from './layout'
 import LayoutSso from './layout/sso'
 
 // Route Views
 import Beranda from './pages/beranda'
 import BeritaAlumni from './pages/berita-alumni'
-import BeritaAlumniDetail from './pages/berita-alumni-detail'
+import BeritaAlumniDetail from './pages/berita-alumni/detail'
 import Pengumuman from './pages/pengumuman'
-import PengumumanDetail from './pages/pengumuman-detail'
+import PengumumanDetail from './pages/pengumuman/detail'
 import Agenda from './pages/agenda'
-import AgendaDetail from './pages/agenda-detail'
+import AgendaDetail from './pages/agenda/detail'
 import Galeri from './pages/galeri'
-import GaleriDetail from './pages/galeri-detail'
+import GaleriDetail from './pages/galeri/detail'
 import Cdc from './pages/cdc'
-import CdcDetail from './pages/cdc-detail'
+import CdcDetail from './pages/cdc/detail'
 import KontakKami from './pages/kontak-kami'
 import StrukturIkapunija from './pages/struktur-ikapunija'
 import StrukturDpa from './pages/struktur-dpa'
@@ -25,6 +27,14 @@ import Register from './pages/register'
 import Profil from './pages/profil'
 
 const Routes = [
+  {
+    path: '/login',
+    exact: true,
+    layout: LayoutSso,
+    isLoggedIn: isLoggedIn(),
+    component: LoginSso,
+    redirectComponent: () => <Redirect to="/" />,
+  },
   { path: '/', exact: true, layout: Layout, component: Beranda },
   {
     path: '/berita-alumni',
@@ -99,7 +109,6 @@ const Routes = [
   },
   { path: '/login-old', exact: true, layout: Layout, component: Login },
   { path: '/register-old', exact: true, layout: Layout, component: Register },
-  { path: '/login', exact: true, layout: LayoutSso, component: LoginSso },
   {
     path: '/register',
     exact: true,

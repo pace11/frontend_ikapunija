@@ -1,5 +1,5 @@
 import { urlApi } from '../const/env'
-import { WEB_HEADERS_GET } from '../const/vars'
+import { WEB_HEADERS_GET, WEB_HEADERS_POST } from '../const/vars'
 import {
   imageBanner,
   imageBeritaAlumni,
@@ -87,7 +87,15 @@ export const ListBeritaAlumni = async () => {
           news_category: item.category,
           news_date: item.tanggal,
         }))
-      return beritaAlumni
+      return {
+        data: beritaAlumni,
+        error: false,
+      }
+    } else {
+      return {
+        data: null,
+        error: true,
+      }
     }
   } catch (error) {
     console.log('err ===>', error)
@@ -114,7 +122,15 @@ export const ListDetailBeritaAlumni = async (id) => {
         news_priority: Data.priority,
         news_date: Data.tanggal,
       }
-      return beritaDetailAlumni
+      return {
+        data: beritaDetailAlumni,
+        error: false,
+      }
+    } else {
+      return {
+        data: null,
+        error: true,
+      }
     }
   } catch (error) {
     console.log('err ===>', error)
@@ -141,7 +157,15 @@ export const ListPengumuman = async () => {
           notice_category: item.category,
           notice_date: item.tanggal,
         }))
-      return pengumuman
+      return {
+        data: pengumuman,
+        error: false,
+      }
+    } else {
+      return {
+        data: null,
+        error: true,
+      }
     }
   } catch (error) {
     console.log('err ===>', error)
@@ -168,7 +192,15 @@ export const ListDetailPengumuman = async (id) => {
         notice_priority: Data.priority,
         notice_date: Data.tanggal,
       }
-      return beritaDetailPengumuman
+      return {
+        data: beritaDetailPengumuman,
+        error: false,
+      }
+    } else {
+      return {
+        data: null,
+        error: true,
+      }
     }
   } catch (error) {
     console.log('err ===>', error)
@@ -200,7 +232,15 @@ export const ListAgenda = async () => {
           agenda_category: item.category,
           agenda_date: item.tanggal,
         }))
-      return agenda
+      return {
+        data: agenda,
+        error: false,
+      }
+    } else {
+      return {
+        data: null,
+        error: true,
+      }
     }
   } catch (error) {
     console.log('err ===>', error)
@@ -226,7 +266,15 @@ export const ListDetailAgenda = async (id) => {
         agenda_priority: Data.priority,
         agenda_date: Data.tanggal,
       }
-      return detailAgenda
+      return {
+        data: detailAgenda,
+        error: false,
+      }
+    } else {
+      return {
+        data: null,
+        error: true,
+      }
     }
   } catch (error) {
     console.log('err ===>', error)
@@ -252,7 +300,15 @@ export const ListGaleri = async () => {
           galeri_id: item.id,
           galeri_title: item.nama,
         }))
-      return galeri
+      return {
+        data: galeri,
+        error: false,
+      }
+    } else {
+      return {
+        data: null,
+        error: true,
+      }
     }
   } catch (error) {
     console.log('err ===>', error)
@@ -279,7 +335,15 @@ export const ListDetailGaleri = async (id) => {
           galeri_image_url: `${imageGallery}/${item.foto}`,
           galeri_active: item.is_active === 'Y' ? true : false,
         }))
-      return detailgaleri
+      return {
+        data: detailgaleri,
+        error: false,
+      }
+    } else {
+      return {
+        data: null,
+        error: true,
+      }
     }
   } catch (error) {
     console.log('err ===>', error)
@@ -310,7 +374,15 @@ export const ListCdc = async () => {
           cdc_end_date: item.end_date,
           cdc_date: item.tanggal,
         }))
-      return cdc
+      return {
+        data: cdc,
+        error: false,
+      }
+    } else {
+      return {
+        data: null,
+        error: true,
+      }
     }
   } catch (error) {
     console.log('err ===>', error)
@@ -340,7 +412,80 @@ export const ListDetailCdc = async (id) => {
         cdc_end_date: Data.end_date,
         cdc_date: Data.tanggal,
       }
-      return detailcdc
+      return {
+        data: detailcdc,
+        error: false,
+      }
+    } else {
+      return {
+        data: null,
+        error: true,
+      }
+    }
+  } catch (error) {
+    console.log('err ===>', error)
+  }
+}
+
+export const PostLogin = async (params) => {
+  try {
+    let formData = new FormData()
+    formData.append('email', params.email)
+    formData.append('password', params.password)
+    formData.append('mode', params.mode)
+    let body = {
+      error: false,
+      message: '',
+      data: null,
+    }
+    const options = {
+      headers: {
+        ...WEB_HEADERS_POST,
+      },
+      body: formData,
+      method: 'POST',
+    }
+    const result = await fetch(`${urlApi}/login`, options)
+    const res = result.json()
+    const response = await res
+    console.log('dapetnya ===>', response)
+    if (response.Error && response.Error.email) {
+      body.error = true
+      body.message = 'Format email salah'
+    } else if (response.Error && response.Message) {
+      body.error = true
+      body.message = response.Message
+    } else {
+      body.error = false
+      body.message = 'Login berhasil'
+      body.data = response.Data
+    }
+    return body
+  } catch (error) {
+    console.log('err ===>', error)
+  }
+}
+
+export const PostLogout = async (params) => {
+  try {
+    const options = {
+      headers: {
+        ...WEB_HEADERS_GET,
+        token: params.token,
+        emai: params.email,
+      },
+      method: 'PUT',
+    }
+    const result = await fetch(`${urlApi}/logout`, options)
+    const { status } = result
+    if (status === 200) {
+      return {
+        error: false,
+      }
+    } else {
+      return {
+        error: true,
+      }
     }
   } catch (error) {
     console.log('err ===>', error)

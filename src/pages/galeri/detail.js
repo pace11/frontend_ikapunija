@@ -1,23 +1,24 @@
 import React from 'react'
-import { useRouteMatch } from 'react-router-dom'
-import { ListGaleri } from '../../api'
+import { useParams } from 'react-router-dom'
+import { ListDetailGaleri } from '../../api'
 import LoadingComponent from './loading-component'
 
-export default function Galeri() {
-  let { url } = useRouteMatch()
+export default function GaleriDetail() {
+  let { id } = useParams()
   const [data, setData] = React.useState()
   const [isLoading, setIsLoading] = React.useState(true)
 
   React.useEffect(() => {
-    async function FetchListGaleri() {
-      await ListGaleri().then((res) => {
+    window.scrollTo(0, 0)
+    async function FetchDetailGaleri() {
+      await ListDetailGaleri(id).then((res) => {
         const { data, error } = res
         setData(data)
         setIsLoading(error)
       })
     }
-    FetchListGaleri()
-  }, [])
+    FetchDetailGaleri()
+  }, [id])
 
   return (
     <React.Fragment>
@@ -35,10 +36,13 @@ export default function Galeri() {
                   <li>
                     <a href="/">Beranda</a>
                   </li>
-                  <li className="active">
+                  <li>
                     <a href="/galeri">
                       <i className="fas fa-camera"></i> Galeri
                     </a>
+                  </li>
+                  <li className="active">
+                    <a href="/#">{id}</a>
                   </li>
                 </ul>
               </div>
@@ -60,27 +64,25 @@ export default function Galeri() {
                   data-lightbox="gallery"
                 >
                   {data &&
-                    data.map((item, idx) => (
-                      <div
-                        key={String(idx)}
-                        className="grid-item"
-                        style={{ padding: '10px' }}
-                      >
-                        <a
-                          className="image-hover-zoom"
-                          href={`${url}/detail/${item.galeri_id}`}
-                        >
-                          <img
-                            src={require('../../assets/img/album.png').default}
-                            alt="img-galeri"
-                            style={{ cursor: 'pointer' }}
-                          />
-                        </a>
-                        <p style={{ marginBottom: '20px' }}>
-                          {item.galeri_title}
-                        </p>
-                      </div>
-                    ))}
+                    data
+                      .filter((item) => item.galeri_active)
+                      .map((item, idx) => (
+                        <div key={String(idx)} className="grid-item">
+                          <a
+                            className="image-hover-zoom"
+                            href={item.galeri_image_url}
+                            data-lightbox="gallery-image"
+                          >
+                            <img
+                              src={item.galeri_image_url}
+                              alt="img-galeri"
+                              onError={(e) => {
+                                e.target.src = 'https://via.placeholder.com/150'
+                              }}
+                            />
+                          </a>
+                        </div>
+                      ))}
                 </div>
               </div>
             </div>

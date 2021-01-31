@@ -13,7 +13,11 @@ export default function App() {
             exact={route.exact}
             component={(props) => (
               <route.layout {...props}>
-                <route.component {...props} />
+                {route && route.isLoggedIn ? (
+                  <route.redirectComponent {...props} />
+                ) : (
+                  <route.component {...props} />
+                )}
               </route.layout>
             )}
           />
