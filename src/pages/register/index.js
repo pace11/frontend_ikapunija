@@ -43,6 +43,7 @@ export default function LoginSso() {
     form2: false,
   })
   const [isLoading, setIsLoading] = React.useState(false)
+  const [isLoadingProdi, setIsLoadingProdi] = React.useState(false)
   const [showMessage, setShowMessage] = React.useState({
     show: false,
     error: false,
@@ -109,7 +110,9 @@ export default function LoginSso() {
 
   const HandleSelect = (val, key) => {
     if (key === 'jurusan_id') {
+      setIsLoadingProdi(true)
       ListProdi(val).then((res) => {
+        setIsLoadingProdi(false)
         setProdi(res && res.Data)
         setData({
           ...data,
@@ -161,28 +164,38 @@ export default function LoginSso() {
   }
 
   const HandleSubmit = () => {
+    window.scrollTo(0, 0)
     setIsLoading(true)
     PostRegister(data).then((res) => {
-      setShowMessage({
-        ...showMessage,
-        show: true,
-        error: res && res.error,
-        message: res && res.message,
-      })
-      setTimeout(() => {
+      if (res && !res.error) {
+        setIsLoading(res.error)
         setShowMessage({
           ...showMessage,
-          show: false,
+          show: true,
+          error: false,
+          message: res && res.message,
         })
-      }, 2000)
-      if (res && !res.error) {
-        window.scrollTo(0, 0)
-        setIsLoading(res.error)
         setTimeout(() => {
+          setShowMessage({
+            ...showMessage,
+            show: false,
+          })
           window.location.href = '/login'
         }, 2000)
       } else {
         setIsLoading(false)
+        setShowMessage({
+          ...showMessage,
+          show: true,
+          error: true,
+          message: res && res.message,
+        })
+        setTimeout(() => {
+          setShowMessage({
+            ...showMessage,
+            show: false,
+          })
+        }, 2000)
       }
     })
   }
@@ -200,8 +213,32 @@ export default function LoginSso() {
           </a>
         </div>
         <div className="row">
-          <div className="col-lg-7 col-md-7 col-xs-12 center p-50 background-white b-r-6">
-            <div className="panel ">
+          <div
+            className="col-lg-7 col-md-7 col-xs-12 center p-50 background-white b-r-6"
+            style={{ position: 'relative', overflow: 'hidden' }}
+          >
+            {isLoading && (
+              <div
+                style={{
+                  display: 'flex',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  position: 'absolute',
+                  width: '100%',
+                  height: '100%',
+                  top: 0,
+                  bottom: 0,
+                  left: 0,
+                  right: 0,
+                  background: '#000',
+                  opacity: '0.5',
+                  zIndex: '999',
+                }}
+              >
+                <PulseLoader size={30} color={`#fff`} />
+              </div>
+            )}
+            <div className="panel">
               <div className="panel-body">
                 {showMessage.show && (
                   <div
@@ -432,7 +469,12 @@ export default function LoginSso() {
                         Program Studi{' '}
                         <span className="text-danger txt-sm">*required</span>
                       </label>
-                      {prodi && (
+                      {isLoadingProdi && (
+                        <div>
+                          <PulseLoader size={10} color={`#27bebe`} />
+                        </div>
+                      )}
+                      {prodi && !isLoadingProdi && (
                         <select
                           className="form-control"
                           id="exampleFormControlSelect1"
@@ -659,7 +701,7 @@ export default function LoginSso() {
                         value={data.nik}
                         onChange={(e) => HandleChange(e.target.value, 'nik')}
                         type="text"
-                        placeholder="Pendapatan"
+                        placeholder="NIK"
                         className="form-control"
                       />
                       {/* <div id="txtName-error" className="is-invalid">
