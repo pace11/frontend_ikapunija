@@ -1,6 +1,7 @@
 import React from 'react'
 import Cookies from 'js-cookie'
 import { PostLogin } from '../../api'
+import { PulseLoader } from 'react-spinners'
 
 export default function LoginSso() {
   const [data, setData] = React.useState({
@@ -13,6 +14,7 @@ export default function LoginSso() {
     error: false,
     message: '',
   })
+  const [isLoading, setIsLoading] = React.useState(false)
 
   const HandleChange = (val, key) => {
     setData({
@@ -22,6 +24,7 @@ export default function LoginSso() {
   }
 
   const HandleSubmit = () => {
+    setIsLoading(true)
     PostLogin(data).then((res) => {
       setShowMessage({
         ...showMessage,
@@ -36,10 +39,18 @@ export default function LoginSso() {
         })
       }, 2000)
       if (res && !res.error) {
-        Cookies.set('user_data_username', JSON.stringify(res && res.data.email))
-        Cookies.set('user_data_token', JSON.stringify(res && res.data.token))
-        Cookies.set('user_logged_in', true)
-        window.location.href = '/'
+        setIsLoading(res.error)
+        setTimeout(() => {
+          Cookies.set(
+            'user_data_username',
+            JSON.stringify(res && res.data.email),
+          )
+          Cookies.set('user_data_token', JSON.stringify(res && res.data.token))
+          Cookies.set('user_logged_in', true)
+          window.location.href = '/'
+        }, 2000)
+      } else {
+        setIsLoading(false)
       }
     })
   }
@@ -95,10 +106,10 @@ export default function LoginSso() {
             <div className="text-left form-group">
               <button
                 className="btn btn-block"
-                disabled={!data.email || !data.password}
+                disabled={!data.email || !data.password || isLoading}
                 onClick={() => HandleSubmit()}
               >
-                Login
+                {isLoading ? <PulseLoader size={5} color={`#fff`} /> : `Login`}
               </button>
             </div>
             <p className="small">

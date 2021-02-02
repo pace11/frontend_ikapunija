@@ -1,11 +1,17 @@
 import { urlApi } from '../const/env'
-import { WEB_HEADERS_GET, WEB_HEADERS_POST } from '../const/vars'
+import {
+  WEB_HEADERS_GET,
+  WEB_HEADERS_POST,
+  WEB_HEADERS_POST2,
+  WEB_HEADERS_POST_LOGOUT,
+} from '../const/vars'
 import {
   imageBanner,
   imageBeritaAlumni,
   imageAgenda,
   imageGallery,
 } from '../const/env'
+import Axios from 'axios'
 
 export const ListRegion = async () => {
   try {
@@ -32,6 +38,44 @@ export const ListProfesi = async () => {
       method: 'GET',
     }
     const result = await fetch(`${urlApi}/profesi`, options)
+    const { status } = result
+    const response = result.json()
+    if (status === 200) {
+      return response
+    }
+  } catch (error) {
+    console.log('err ===>', error)
+  }
+}
+
+export const ListJurusan = async () => {
+  try {
+    const options = {
+      headers: {
+        ...WEB_HEADERS_GET,
+      },
+      method: 'GET',
+    }
+    const result = await fetch(`${urlApi}/jurusan`, options)
+    const { status } = result
+    const response = result.json()
+    if (status === 200) {
+      return response
+    }
+  } catch (error) {
+    console.log('err ===>', error)
+  }
+}
+
+export const ListProdi = async (id) => {
+  try {
+    const options = {
+      headers: {
+        ...WEB_HEADERS_GET,
+      },
+      method: 'GET',
+    }
+    const result = await fetch(`${urlApi}/prodi/${id}`, options)
     const { status } = result
     const response = result.json()
     if (status === 200) {
@@ -448,7 +492,6 @@ export const PostLogin = async (params) => {
     const result = await fetch(`${urlApi}/login`, options)
     const res = result.json()
     const response = await res
-    console.log('dapetnya ===>', response)
     if (response.Error && response.Error.email) {
       body.error = true
       body.message = 'Format email salah'
@@ -466,13 +509,46 @@ export const PostLogin = async (params) => {
   }
 }
 
+export const PostRegister = async (params) => {
+  try {
+    let body = {
+      error: false,
+      message: '',
+    }
+    const result = await Axios({
+      method: 'POST',
+      url: `${urlApi}/register`,
+      data: params,
+      headers: {
+        ...WEB_HEADERS_POST2,
+      },
+    })
+    const { data } = result
+    if (data && data.StatusCode === 200) {
+      body.message = 'Registrasi berhasil'
+    } else if (data && data.StatusCode === 401) {
+      body.error = true
+      body.message = data && data.Message
+    } else if (data && data.Error && data.Error.email.length >= 1) {
+      body.error = true
+      body.message = 'Format email masih salah'
+    } else {
+      body.error = true
+      body.message = 'Registrasi gagal. periksa kembali data yang dimasukkan'
+    }
+    return body
+  } catch (error) {
+    console.log('err ===>', error)
+  }
+}
+
 export const PostLogout = async (params) => {
   try {
     const options = {
       headers: {
-        ...WEB_HEADERS_GET,
+        ...WEB_HEADERS_POST_LOGOUT,
         token: params.token,
-        emai: params.email,
+        email: params.email,
       },
       method: 'PUT',
     }

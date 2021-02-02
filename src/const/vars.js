@@ -11,9 +11,19 @@ const WEB_HEADERS_POST = {
   mode: 'cors',
 }
 
+const WEB_HEADERS_POST2 = {
+  apiToken: apiToken,
+  'Content-Type': 'application/json',
+}
+
 const WEB_HEADERS_POST_LOGOUT = {
   apiToken: apiToken,
   type: 'user',
 }
 
-export { WEB_HEADERS_GET, WEB_HEADERS_POST, WEB_HEADERS_POST_LOGOUT }
+export {
+  WEB_HEADERS_GET,
+  WEB_HEADERS_POST,
+  WEB_HEADERS_POST2,
+  WEB_HEADERS_POST_LOGOUT,
+}

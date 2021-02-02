@@ -128,13 +128,12 @@ export default function Navbar({ location }) {
                             <a href={`/profil`}>Profile ku</a>
                           </li>
                           <li>
-                            <a
-                              href="/#"
+                            <span
                               className="text-danger"
                               onClick={() => userLoggedOut()}
                             >
-                              Logout
-                            </a>
+                              <i className="icon-log-out"></i> Logout
+                            </span>
                           </li>
                         </ul>
                       </li>
