@@ -21,9 +21,8 @@ import StrukturDpa from './pages/struktur-dpa'
 import VisiMisi from './pages/visi-misi'
 import Sejarah from './pages/sejarah'
 import Login from './pages/login'
-import LoginSso from './pages/login'
-import RegisterSso from './pages/register'
 import Register from './pages/register'
+import LupaPassword from './pages/lupa-password'
 import Profil from './pages/profil'
 
 const Routes = [
@@ -32,7 +31,7 @@ const Routes = [
     exact: true,
     layout: LayoutSso,
     isLoggedIn: isLoggedIn(),
-    component: LoginSso,
+    component: Login,
     redirectComponent: () => <Redirect to="/" />,
   },
   { path: '/', exact: true, layout: Layout, component: Beranda },
@@ -107,13 +106,17 @@ const Routes = [
     layout: Layout,
     component: Sejarah,
   },
-  { path: '/login-old', exact: true, layout: Layout, component: Login },
-  { path: '/register-old', exact: true, layout: Layout, component: Register },
   {
     path: '/register',
     exact: true,
     layout: LayoutSso,
-    component: RegisterSso,
+    component: Register,
+  },
+  {
+    path: '/lupa-password',
+    exact: true,
+    layout: LayoutSso,
+    component: LupaPassword,
   },
 ]
 

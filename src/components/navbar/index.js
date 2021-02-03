@@ -1,4 +1,5 @@
 import React from 'react'
+import cookies from 'js-cookie'
 import { useRouteMatch } from 'react-router-dom'
 import { isLoggedIn, userLoggedIn, userLoggedOut } from '../../utils/helpers'
 import { ListBanner } from '../../api'
@@ -9,21 +10,21 @@ export default function Navbar({ location }) {
   const [banner, setBanner] = React.useState()
 
   React.useEffect(() => {
-    const BANNER_LOCAL = window.localStorage.getItem('list_banner')
+    const BANNER_LOCAL = cookies.get('list_banner')
     async function FetchListBanner() {
-      if (BANNER_LOCAL && BANNER_LOCAL !== 'undefined') {
+      if (BANNER_LOCAL && BANNER_LOCAL !== undefined) {
         setBanner(JSON.parse(BANNER_LOCAL))
         await ListBanner().then((res) => {
           if (JSON.stringify(res) === BANNER_LOCAL) {
             setBanner(JSON.parse(BANNER_LOCAL))
           } else {
-            window.localStorage.setItem('list_banner', JSON.stringify(res))
+            cookies.set('list_banner', JSON.stringify(res))
             window.location.href = '/'
           }
         })
       } else {
         await ListBanner().then((res) => {
-          window.localStorage.setItem('list_banner', JSON.stringify(res))
+          cookies.set('list_banner', JSON.stringify(res))
           setBanner(res)
         })
         window.location.href = '/'

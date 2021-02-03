@@ -26,7 +26,7 @@ export default function Pengumuman() {
           <div className="content col-lg-12 col-md-12 col-xs-12">
             <div className="page-title">
               <h1>
-                <i class="fas fa-bullhorn"></i> Pengumuman
+                <i className="fas fa-bullhorn"></i> Pengumuman
               </h1>
               <div className="breadcrumb float-left">
                 <ul>
@@ -35,7 +35,7 @@ export default function Pengumuman() {
                   </li>
                   <li className="active">
                     <a href="/pengumuman">
-                      <i class="fas fa-bullhorn"></i> Pengumuman
+                      <i className="fas fa-bullhorn"></i> Pengumuman
                     </a>
                   </li>
                 </ul>

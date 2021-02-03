@@ -6,8 +6,6 @@ import { PulseLoader } from 'react-spinners'
 export default function LoginSso() {
   const [data, setData] = React.useState({
     email: '',
-    password: '',
-    mode: 'userWeb',
   })
   const [showMessage, setShowMessage] = React.useState({
     show: false,
@@ -82,43 +80,25 @@ export default function LoginSso() {
                 {showMessage.message}
               </div>
             )}
-            <h3 className="text-center">LOGIN</h3>
-            <div className="form-group">
+            <h3 className="text-center">LUPA PASSWORD</h3>
+            <div className="form-group mb-3">
               <label>Email</label>
               <input
-                type="text"
+                type="email"
                 className="form-control"
                 placeholder="Masukkan email anda ..."
                 value={data.email}
                 onChange={(e) => HandleChange(e.target.value, 'email')}
               />
             </div>
-            <div className="form-group mb-3">
-              <label>Password</label>
-              <input
-                type="password"
-                className="form-control"
-                placeholder="Masukkan password anda ..."
-                value={data.password}
-                onChange={(e) => HandleChange(e.target.value, 'password')}
-              />
-            </div>
             <div className="text-left form-group">
               <button
                 className="btn btn-block"
-                disabled={!data.email || !data.password || isLoading}
+                disabled={!data.email || isLoading}
                 onClick={() => HandleSubmit()}
               >
-                {isLoading ? <PulseLoader size={5} color={`#fff`} /> : `Login`}
+                {isLoading ? <PulseLoader size={5} color={`#fff`} /> : `Kirim`}
               </button>
-            </div>
-            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-              <span className="small">
-                Belum punya akun? <a href={`/register`}>Registrasi Sekarang</a>
-              </span>
-              <span className="small">
-                <a href={`/lupa-password`}>Lupa Password ?</a>
-              </span>
             </div>
           </div>
         </div>

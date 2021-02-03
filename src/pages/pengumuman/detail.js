@@ -27,7 +27,7 @@ export default function BeritaAlumniDetail() {
           <div className="content col-lg-12 col-md-12 col-xs-12">
             <div className="page-title">
               <h1>
-                <i class="fas fa-bullhorn"></i> Pengumuman
+                <i className="fas fa-bullhorn"></i> Pengumuman
               </h1>
               <div className="breadcrumb float-left">
                 <ul>
@@ -36,7 +36,7 @@ export default function BeritaAlumniDetail() {
                   </li>
                   <li>
                     <a href="/pengumuman">
-                      <i class="fas fa-bullhorn"></i> Pengumuman
+                      <i className="fas fa-bullhorn"></i> Pengumuman
                     </a>
                   </li>
                   <li className="active">

@@ -6,6 +6,7 @@ import {
   ListProdi,
   PostRegister,
 } from '../../api'
+import { range } from '../../utils/helpers'
 import { PulseLoader } from 'react-spinners'
 import ImageProfile from './image-profile'
 
@@ -14,6 +15,10 @@ export default function LoginSso() {
   const [profesi, setProfesi] = React.useState()
   const [jurusan, setJurusan] = React.useState()
   const [prodi, setProdi] = React.useState()
+  const [validNumber, setValidNumber] = React.useState({
+    contact: false,
+    nik: false,
+  })
   const [confirmPassword, setConfirmPassword] = React.useState({
     error: false,
     value: '',
@@ -200,6 +205,18 @@ export default function LoginSso() {
     })
   }
 
+  const HandleKeyUp = (val, key) => {
+    if (key === 'nik') {
+      val.match(/^[0-9]{16,16}$/)
+        ? setValidNumber({ ...validNumber, [key]: true })
+        : setValidNumber({ ...validNumber, [key]: false })
+    } else {
+      val.match(/^[0-9]{8,14}$/)
+        ? setValidNumber({ ...validNumber, [key]: true })
+        : setValidNumber({ ...validNumber, [key]: false })
+    }
+  }
+
   return (
     <div className="container">
       <div>
@@ -256,42 +273,6 @@ export default function LoginSso() {
                 <h2 className="text-center">REGISTRASI</h2>
                 <div className="row">
                   <div className="col-md-6">
-                    <div className="form-group">
-                      <label>
-                        Nama User{' '}
-                        <span className="text-danger txt-sm">*required</span>
-                      </label>
-                      <input
-                        value={data.nama_alumni}
-                        onChange={(e) =>
-                          HandleChange(e.target.value, 'nama_alumni')
-                        }
-                        type="text"
-                        placeholder="Nama User ..."
-                        className="form-control"
-                      />
-                      {/* <div id="txtName-error" className="is-invalid">
-                        This field is required.
-                      </div> */}
-                    </div>
-                    <div className="form-group">
-                      <label>
-                        Email{' '}
-                        <span className="text-danger txt-sm">*required</span>
-                      </label>
-                      <input
-                        value={data.email}
-                        onChange={(e) => HandleChange(e.target.value, 'email')}
-                        type="email"
-                        placeholder="Email ..."
-                        className="form-control"
-                      />
-                      {/* <div id="txtName-error" className="is-invalid">
-                        This field is required.
-                      </div> */}
-                    </div>
-                  </div>
-                  <div className="col-md-6">
                     <div
                       className="form-group"
                       style={{
@@ -325,6 +306,42 @@ export default function LoginSso() {
                       )}
                     </div>
                   </div>
+                  <div className="col-md-6">
+                    <div className="form-group">
+                      <label>
+                        Nama Alumni{' '}
+                        <span className="text-danger txt-sm">*required</span>
+                      </label>
+                      <input
+                        value={data.nama_alumni}
+                        onChange={(e) =>
+                          HandleChange(e.target.value, 'nama_alumni')
+                        }
+                        type="text"
+                        placeholder="Masukkan nama alumni ..."
+                        className="form-control"
+                      />
+                      {/* <div id="txtName-error" className="is-invalid">
+                        This field is required.
+                      </div> */}
+                    </div>
+                    <div className="form-group">
+                      <label>
+                        Email{' '}
+                        <span className="text-danger txt-sm">*required</span>
+                      </label>
+                      <input
+                        value={data.email}
+                        onChange={(e) => HandleChange(e.target.value, 'email')}
+                        type="email"
+                        placeholder="Masukkan email aktif ..."
+                        className="form-control"
+                      />
+                      {/* <div id="txtName-error" className="is-invalid">
+                        This field is required.
+                      </div> */}
+                    </div>
+                  </div>
                 </div>
                 <div className="row">
                   <div className="col-md-6">
@@ -339,7 +356,7 @@ export default function LoginSso() {
                           HandleChange(e.target.value, 'password')
                         }
                         type="password"
-                        placeholder="Password ..."
+                        placeholder="Masukkan password ..."
                         className="form-control"
                       />
                       {/* <div id="txtName-error" className="is-invalid">
@@ -359,7 +376,7 @@ export default function LoginSso() {
                         }
                         value={confirmPassword.value}
                         type="password"
-                        placeholder="Konfirmasi password ..."
+                        placeholder="Masukkan konfirmasi password ..."
                         className="form-control"
                       />
                       {confirmPassword.error && (
@@ -379,7 +396,7 @@ export default function LoginSso() {
                       </label>
                       <textarea
                         type="text"
-                        placeholder="Alamat ..."
+                        placeholder="Masukkan alamat ktp/domisili ..."
                         className="form-control"
                         onChange={(e) => HandleChange(e.target.value, 'alamat')}
                         value={data.alamat}
@@ -402,13 +419,16 @@ export default function LoginSso() {
                         onChange={(e) =>
                           HandleChange(e.target.value, 'contact')
                         }
+                        onKeyUp={(e) => HandleKeyUp(e.target.value, 'contact')}
                         type="text"
-                        placeholder="No Hp ..."
+                        placeholder="Masukkan no hp ..."
                         className="form-control"
                       />
-                      {/* <div id="txtName-error" className="is-invalid">
-                        This field is required.
-                      </div> */}
+                      {!validNumber.contact && data.contact && (
+                        <div id="txtName-error" className="is-invalid">
+                          Harus number dengan jumlah antara 8-14 digit
+                        </div>
+                      )}
                     </div>
                   </div>
                   <div className="col-md-6">
@@ -417,15 +437,25 @@ export default function LoginSso() {
                         Angkatan{' '}
                         <span className="text-danger txt-sm">*required</span>
                       </label>
-                      <input
-                        value={data.angkatan}
-                        onChange={(e) =>
-                          HandleChange(e.target.value, 'angkatan')
-                        }
-                        type="text"
-                        placeholder="Angkatan ..."
+                      <select
                         className="form-control"
-                      />
+                        id="exampleFormControlSelect6"
+                        onChange={(e) =>
+                          HandleSelect(e.target.value, 'angkatan')
+                        }
+                        value={data.angkatan}
+                      >
+                        <option style={{ display: 'none' }}>
+                          -- pilih salah satu --
+                        </option>
+                        {range(1980, new Date().getFullYear()).map(
+                          (item, idx) => (
+                            <option key={String(idx)} value={item}>
+                              {item}
+                            </option>
+                          ),
+                        )}
+                      </select>
                       {/* <div id="txtName-error" className="is-invalid">
                             This field is required.
                           </div> */}
@@ -700,13 +730,16 @@ export default function LoginSso() {
                       <input
                         value={data.nik}
                         onChange={(e) => HandleChange(e.target.value, 'nik')}
+                        onKeyUp={(e) => HandleKeyUp(e.target.value, 'nik')}
                         type="text"
-                        placeholder="NIK"
+                        placeholder="Masukkan 16 digit NIK ..."
                         className="form-control"
                       />
-                      {/* <div id="txtName-error" className="is-invalid">
-                        This field is required.
-                      </div> */}
+                      {!validNumber.nik && data.nik && (
+                        <div id="txtName-error" className="is-invalid">
+                          Harus number dengan jumlah 16 digit
+                        </div>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -753,6 +786,8 @@ export default function LoginSso() {
                       !data.jurusan_id ||
                       !data.prodi_id ||
                       confirmPassword.error ||
+                      !validNumber.nik ||
+                      !validNumber.contact ||
                       isLoading
                     }
                   >
