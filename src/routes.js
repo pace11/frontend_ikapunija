@@ -23,6 +23,7 @@ import Sejarah from './pages/sejarah'
 import Login from './pages/login'
 import Register from './pages/register'
 import LupaPassword from './pages/lupa-password'
+import VerifikasiPassword from './pages/verifikasi-password'
 import Profil from './pages/profil'
 
 const Routes = [
@@ -117,6 +118,12 @@ const Routes = [
     exact: true,
     layout: LayoutSso,
     component: LupaPassword,
+  },
+  {
+    path: '/verifikasi-password',
+    exact: true,
+    layout: LayoutSso,
+    component: VerifikasiPassword,
   },
 ]
 

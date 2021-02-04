@@ -521,6 +521,7 @@ export const PostRegister = async (params) => {
       data: params,
       headers: {
         ...WEB_HEADERS_POST2,
+        type: 'web',
       },
     })
     const { data } = result
@@ -563,6 +564,100 @@ export const PostLogout = async (params) => {
         error: true,
       }
     }
+  } catch (error) {
+    console.log('err ===>', error)
+  }
+}
+
+export const ForgotPassword = async (params) => {
+  try {
+    let formData = new FormData()
+    formData.append('email', params.email)
+    formData.append('mode', 'web')
+    let body = {
+      error: false,
+      message: '',
+    }
+    const result = await Axios({
+      method: 'POST',
+      url: `${urlApi}/forgotPassword`,
+      data: formData,
+      headers: {
+        ...WEB_HEADERS_POST,
+      },
+    })
+    const { data } = result
+    if (data && data.StatusCode === 200) {
+      body.message = data && data.Message
+    } else {
+      body.error = true
+      body.message = data && data.Message
+    }
+    return body
+  } catch (error) {
+    console.log('err ===>', error)
+  }
+}
+
+export const VerifikasiPassword = async (params) => {
+  try {
+    let formData = new FormData()
+    formData.append('email', params.email)
+    formData.append('verify_code', params.verify_code)
+    formData.append('mode', 'web')
+    let body = {
+      error: false,
+      message: '',
+    }
+    const result = await Axios({
+      method: 'POST',
+      url: `${urlApi}/verifyForgotPassword`,
+      data: formData,
+      headers: {
+        ...WEB_HEADERS_POST,
+      },
+    })
+    const { data } = result
+    if (data && data.StatusCode === 200) {
+      body.message = data && data.Message
+    } else {
+      body.error = true
+      body.message = data && data.Message
+    }
+    return body
+  } catch (error) {
+    console.log('err ===>', error)
+  }
+}
+
+export const ChangePassword = async (params) => {
+  try {
+    let formData = new FormData()
+    formData.append('email', params.email)
+    formData.append('password', params.password)
+    formData.append('cPassword', params.cPassword)
+    formData.append('verify_code', params.verify_code)
+    formData.append('mode', 'web')
+    let body = {
+      error: false,
+      message: '',
+    }
+    const result = await Axios({
+      method: 'POST',
+      url: `${urlApi}/updatePassword`,
+      data: formData,
+      headers: {
+        ...WEB_HEADERS_POST,
+      },
+    })
+    const { data } = result
+    if (data && data.StatusCode === 200) {
+      body.message = 'Password berhasil diganti'
+    } else {
+      body.error = true
+      body.message = data && data.Message
+    }
+    return body
   } catch (error) {
     console.log('err ===>', error)
   }

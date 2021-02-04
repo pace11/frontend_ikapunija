@@ -1,9 +1,8 @@
 import React from 'react'
-import Cookies from 'js-cookie'
-import { PostLogin } from '../../api'
+import { ForgotPassword } from '../../api'
 import { PulseLoader } from 'react-spinners'
 
-export default function LoginSso() {
+export default function LupaPassword() {
   const [data, setData] = React.useState({
     email: '',
   })
@@ -23,32 +22,23 @@ export default function LoginSso() {
 
   const HandleSubmit = () => {
     setIsLoading(true)
-    PostLogin(data).then((res) => {
-      setShowMessage({
-        ...showMessage,
-        show: true,
-        error: res && res.error,
-        message: res && res.message,
-      })
-      setTimeout(() => {
-        setShowMessage({
-          ...showMessage,
-          show: false,
-        })
-      }, 2000)
+    ForgotPassword(data).then((res) => {
       if (res && !res.error) {
         setIsLoading(res.error)
-        setTimeout(() => {
-          Cookies.set(
-            'user_data_username',
-            JSON.stringify(res && res.data.email),
-          )
-          Cookies.set('user_data_token', JSON.stringify(res && res.data.token))
-          Cookies.set('user_logged_in', true)
-          window.location.href = '/'
-        }, 2000)
+        setShowMessage({
+          ...showMessage,
+          show: true,
+          error: false,
+          message: res && res.message,
+        })
       } else {
         setIsLoading(false)
+        setShowMessage({
+          ...showMessage,
+          show: true,
+          error: true,
+          message: res && res.message,
+        })
       }
     })
   }
@@ -100,6 +90,9 @@ export default function LoginSso() {
                 {isLoading ? <PulseLoader size={5} color={`#fff`} /> : `Kirim`}
               </button>
             </div>
+            <p className="small">
+              <a href={`/verifikasi-password`}>Verifikasi Password</a>
+            </p>
           </div>
         </div>
       </div>

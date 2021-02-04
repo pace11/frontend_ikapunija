@@ -180,13 +180,6 @@ export default function LoginSso() {
           error: false,
           message: res && res.message,
         })
-        setTimeout(() => {
-          setShowMessage({
-            ...showMessage,
-            show: false,
-          })
-          window.location.href = '/login'
-        }, 2000)
       } else {
         setIsLoading(false)
         setShowMessage({
@@ -195,12 +188,6 @@ export default function LoginSso() {
           error: true,
           message: res && res.message,
         })
-        setTimeout(() => {
-          setShowMessage({
-            ...showMessage,
-            show: false,
-          })
-        }, 2000)
       }
     })
   }
