@@ -1,8 +1,10 @@
 import React from 'react'
+import { useHistory } from 'react-router-dom'
 import { ForgotPassword } from '../../api'
 import { PulseLoader } from 'react-spinners'
 
 export default function LupaPassword() {
+  const history = useHistory()
   const [data, setData] = React.useState({
     email: '',
   })
@@ -25,11 +27,9 @@ export default function LupaPassword() {
     ForgotPassword(data).then((res) => {
       if (res && !res.error) {
         setIsLoading(res.error)
-        setShowMessage({
-          ...showMessage,
-          show: true,
-          error: false,
-          message: res && res.message,
+        history.push({
+          pathname: '/verifikasi-password',
+          state: { email: data.email },
         })
       } else {
         setIsLoading(false)
@@ -90,9 +90,6 @@ export default function LupaPassword() {
                 {isLoading ? <PulseLoader size={5} color={`#fff`} /> : `Kirim`}
               </button>
             </div>
-            <p className="small">
-              <a href={`/verifikasi-password`}>Verifikasi Password</a>
-            </p>
           </div>
         </div>
       </div>

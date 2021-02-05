@@ -1,10 +1,10 @@
 import React from 'react'
 import { VerifikasiPassword, ChangePassword } from '../../api'
-import { PulseLoader } from 'react-spinners'
+import { PulseLoader, BounceLoader } from 'react-spinners'
 
-export default function VerifikasiPasswordContainer() {
+export default function VerifikasiPasswordContainer(props) {
   const [data, setData] = React.useState({
-    email: '',
+    email: props.location.state !== undefined ? props.location.state.email : '',
     password: '',
     cPassword: '',
     verify_code: '',
@@ -63,6 +63,14 @@ export default function VerifikasiPasswordContainer() {
             error: false,
             message: res && res.message,
           })
+          setData({
+            ...data,
+            password: '',
+            cPassword: '',
+          })
+          setTimeout(() => {
+            window.location.href = '/login'
+          }, 3000)
         } else {
           setIsLoadingS2(false)
           setShowMessageS2({
@@ -163,17 +171,26 @@ export default function VerifikasiPasswordContainer() {
         ) : (
           <div className="row">
             <div className="col-lg-5 center p-50 background-white b-r-6">
-              {showMessage.show && (
-                <div
-                  role="alert"
-                  className={`alert ${
-                    showMessage.error ? 'alert-danger' : 'alert-info'
-                  } alert-dismissible`}
-                >
-                  <strong>
-                    <i className="fa fa-info-circle"></i>
-                  </strong>{' '}
-                  {showMessage.message}
+              {showMessageS2.show && (
+                <div>
+                  <div
+                    role="alert"
+                    className={`alert ${
+                      showMessageS2.error ? 'alert-danger' : 'alert-info'
+                    } alert-dismissible`}
+                  >
+                    <strong>
+                      <i className="fa fa-info-circle"></i>
+                    </strong>{' '}
+                    {showMessageS2.message}
+                  </div>
+                  <div>
+                    <BounceLoader size={20} color={`#27bebe`} />
+                    <p className="text-center">
+                      Segera diarahkan ke <a href="/login">Login</a> dalam 3
+                      detik
+                    </p>
+                  </div>
                 </div>
               )}
               <h3 className="text-center">PASSWORD BARU</h3>
