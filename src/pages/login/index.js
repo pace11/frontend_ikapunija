@@ -1,15 +1,24 @@
 import React from 'react'
 import Cookies from 'js-cookie'
+import { useLocation } from 'react-router-dom'
 import { PostLogin } from '../../api'
 import { PulseLoader } from 'react-spinners'
 
 export default function LoginSso() {
+  const location = useLocation()
+  const query = new URLSearchParams(location.search)
+
   const [data, setData] = React.useState({
     email: '',
     password: '',
     mode: 'userWeb',
   })
   const [showMessage, setShowMessage] = React.useState({
+    show: false,
+    error: false,
+    message: '',
+  })
+  const [showMessage2, setShowMessage2] = React.useState({
     show: false,
     error: false,
     message: '',
@@ -63,6 +72,36 @@ export default function LoginSso() {
     })
   }
 
+  React.useEffect(() => {
+    if (query.get('status') === 'success') {
+      setShowMessage2({
+        ...showMessage2,
+        show: true,
+        error: false,
+        message: `Verifikasi akun berhasil. harap menunggu aktivasi akun dari Admin agar akun dapat digunakan`,
+      })
+      setTimeout(() => {
+        setShowMessage2({
+          ...showMessage2,
+          show: false,
+        })
+      }, 5000)
+    } else {
+      setShowMessage2({
+        ...showMessage2,
+        show: true,
+        error: true,
+        message: `<strong><i className="fa fa-info-circle"></i> Info!</strong> Verifikasi akun gagal. informasi lebih lanjut bisa menghubungi Admin melalui <a href="/kontak-kami" style="color:#000;">Kontak Kami</a>`,
+      })
+      setTimeout(() => {
+        setShowMessage2({
+          ...showMessage2,
+          show: false,
+        })
+      }, 8000)
+    }
+  }, [])
+
   return (
     <div className="container">
       <div>
@@ -88,6 +127,18 @@ export default function LoginSso() {
                   <i className="fa fa-info-circle"></i> Info!
                 </strong>{' '}
                 {showMessage.message}
+              </div>
+            )}
+            {showMessage2.show && (
+              <div
+                role="alert"
+                className={`alert ${
+                  showMessage2.error ? 'alert-danger' : 'alert-info'
+                } alert-dismissible`}
+              >
+                <div
+                  dangerouslySetInnerHTML={{ __html: showMessage2.message }}
+                />
               </div>
             )}
             <h3 className="text-center">LOGIN</h3>

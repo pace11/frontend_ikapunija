@@ -1,6 +1,63 @@
 import React from 'react'
+import { PostKontakKami } from '../../api'
+import { PulseLoader } from 'react-spinners'
 
 export default function KontakKami() {
+  const [data, setData] = React.useState({
+    email: '',
+    nama: '',
+    judul: '',
+    pesan: '',
+  })
+  const [isLoading, setIsLoading] = React.useState(false)
+  const [showMessage, setShowMessage] = React.useState({
+    show: false,
+    error: false,
+    message: '',
+  })
+
+  const HandleSubmit = () => {
+    setIsLoading(true)
+    PostKontakKami(data).then((res) => {
+      setIsLoading(false)
+      const { message, error } = res
+      if (!error) {
+        setShowMessage({
+          ...showMessage,
+          show: true,
+          error: false,
+          message: message,
+        })
+        setTimeout(() => {
+          setShowMessage({
+            ...showMessage,
+            show: false,
+          })
+        }, 4000)
+      } else {
+        setShowMessage({
+          ...showMessage,
+          show: true,
+          error: true,
+          message: message,
+        })
+        setTimeout(() => {
+          setShowMessage({
+            ...showMessage,
+            show: false,
+          })
+        }, 4000)
+      }
+    })
+  }
+
+  const HandleChange = (val, key) => {
+    setData({
+      ...data,
+      [key]: val,
+    })
+  }
+
   return (
     <React.Fragment>
       <section
@@ -32,75 +89,82 @@ export default function KontakKami() {
                 Silahkan berdiskusi dan mengirimkan pertanyaan kepada kita
                 melalui form dibawah ini.
               </p>
-              <div className="m-t-30">
-                <form
-                  className="widget-contact-form"
-                  noValidate
-                  action="/#"
-                  method="post"
+              {showMessage.show && (
+                <div
+                  role="alert"
+                  className={`alert ${
+                    showMessage.error ? 'alert-danger' : 'alert-info'
+                  } alert-dismissible`}
                 >
-                  <div className="row">
-                    <div className="form-group col-md-6">
-                      <label htmlFor="name">Nama</label>
-                      <input
-                        type="text"
-                        aria-required="true"
-                        name="widget-contact-form-name"
-                        required
-                        className="form-control required name"
-                        placeholder="Enter your Name"
-                      />
-                    </div>
-                    <div className="form-group col-md-6">
-                      <label htmlFor="email">Email</label>
-                      <input
-                        type="email"
-                        aria-required="true"
-                        name="widget-contact-form-email"
-                        required
-                        className="form-control required email"
-                        placeholder="Enter your Email"
-                      />
-                    </div>
-                  </div>
-                  <div className="row">
-                    <div className="form-group col-md-12">
-                      <label htmlFor="subject">Subjek</label>
-                      <input
-                        type="text"
-                        name="widget-contact-form-subject"
-                        required
-                        className="form-control required"
-                        placeholder="Subject..."
-                      />
-                    </div>
-                  </div>
-                  <div className="form-group">
-                    <label htmlFor="message">Pesan</label>
-                    <textarea
+                  <strong>
+                    <i className="fa fa-info-circle"></i> Info!
+                  </strong>{' '}
+                  {showMessage.message}
+                </div>
+              )}
+              <div className="m-t-30">
+                <div className="row">
+                  <div className="form-group col-md-6">
+                    <label htmlFor="name">Nama</label>
+                    <input
+                      onChange={(e) => HandleChange(e.target.value, 'nama')}
+                      value={data.nama}
                       type="text"
-                      name="widget-contact-form-message"
-                      required
-                      rows="5"
-                      className="form-control required"
-                      placeholder="Enter your Message"
-                    ></textarea>
+                      className="form-control"
+                      placeholder="Isikan nama anda ..."
+                    />
                   </div>
-                  <div className="form-group">
-                    <script
-                      src="https://www.google.com/recaptcha/api.js"
-                      async
-                      defer
-                    ></script>
-                    <div
-                      className="g-recaptcha"
-                      data-sitekey="6LddCxAUAAAAAKOg0-U6IprqOZ7vTfiMNSyQT2-M"
-                    ></div>
+                  <div className="form-group col-md-6">
+                    <label htmlFor="email">Email</label>
+                    <input
+                      onChange={(e) => HandleChange(e.target.value, 'email')}
+                      value={data.email}
+                      type="email"
+                      className="form-control"
+                      placeholder="Isikan email anda ..."
+                    />
                   </div>
-                  <button className="btn" type="submit" id="form-submit">
-                    <i className="fa fa-paper-plane"></i>&nbsp;Kirim Pesan
-                  </button>
-                </form>
+                </div>
+                <div className="row">
+                  <div className="form-group col-md-12">
+                    <label htmlFor="subject">Subjek</label>
+                    <input
+                      onChange={(e) => HandleChange(e.target.value, 'judul')}
+                      value={data.judul}
+                      type="text"
+                      className="form-control"
+                      placeholder="Isikan subjek ..."
+                    />
+                  </div>
+                </div>
+                <div className="form-group">
+                  <label htmlFor="message">Pesan</label>
+                  <textarea
+                    onChange={(e) => HandleChange(e.target.value, 'pesan')}
+                    value={data.pesan}
+                    type="text"
+                    rows="5"
+                    className="form-control"
+                    placeholder="Isikan pesan anda ..."
+                  ></textarea>
+                </div>
+                <button
+                  className="btn"
+                  disabled={
+                    !data.pesan ||
+                    !data.judul ||
+                    !data.email ||
+                    !data.nama ||
+                    isLoading
+                  }
+                  onClick={() => HandleSubmit()}
+                >
+                  {isLoading ? (
+                    <PulseLoader size={5} color={`#fff`} />
+                  ) : (
+                    `Kirim Pesan`
+                  )}
+                </button>
               </div>
             </div>
             <div className="col-lg-6">

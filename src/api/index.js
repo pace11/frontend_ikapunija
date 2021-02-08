@@ -576,6 +576,33 @@ export const PostRegister = async (params) => {
   }
 }
 
+export const PostKontakKami = async (params) => {
+  try {
+    let body = {
+      error: false,
+      message: '',
+    }
+    const result = await Axios({
+      method: 'POST',
+      url: `${urlApi}/contact`,
+      data: params,
+      headers: {
+        apiToken: apiToken,
+      },
+    })
+    const { data } = result
+    if (data && data.StatusCode === 200) {
+      body.message = 'Pesan berhasil terkirim'
+    } else {
+      body.error = true
+      body.message = 'Pesan gagal terkirim'
+    }
+    return body
+  } catch (error) {
+    console.log('err ===>', error)
+  }
+}
+
 export const PostLogout = async (params) => {
   try {
     const options = {

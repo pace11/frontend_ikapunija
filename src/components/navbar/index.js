@@ -2,7 +2,6 @@ import React from 'react'
 import { useRouteMatch } from 'react-router-dom'
 import {
   isLoggedIn,
-  userLoggedIn,
   userLoggedOut,
   getBrowser,
   splitUsername,
