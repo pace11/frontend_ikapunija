@@ -86,7 +86,8 @@ export default function LoginSso() {
           show: false,
         })
       }, 5000)
-    } else {
+    }
+    if (query.get('status') === 'failed') {
       setShowMessage2({
         ...showMessage2,
         show: true,
