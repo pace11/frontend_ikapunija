@@ -87,6 +87,29 @@ export default function LoginSso() {
     })
   }
 
+  const ClearData = () => {
+    setData({
+      ...data,
+      email: '',
+      nama_alumni: '',
+      password: '',
+      contact: '',
+      alamat: '',
+      angkatan: '',
+      negara_id: '',
+      hobi: '',
+      profesi_id: '',
+      nama_profesi: '',
+      jumlah_pegawai: '0',
+      pendapatan: '',
+      foto_ktp: '',
+      foto_profil: '',
+      nik: '',
+      jurusan_id: '',
+      prodi_id: '',
+    })
+  }
+
   const HandleChangeImage = (e) => {
     const file_reader = new FileReader(),
       file_image = e.target.files[0]
@@ -180,6 +203,7 @@ export default function LoginSso() {
           error: false,
           message: res && res.message,
         })
+        ClearData()
       } else {
         setIsLoading(false)
         setShowMessage({

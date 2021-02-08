@@ -559,7 +559,8 @@ export const PostRegister = async (params) => {
     })
     const { data } = result
     if (data && data.StatusCode === 200) {
-      body.message = 'Registrasi berhasil'
+      body.message =
+        'Registrasi berhasil, harap cek email anda untuk melakukan verifikasi akun'
     } else if (data && data.StatusCode === 401) {
       body.error = true
       body.message = data && data.Message
