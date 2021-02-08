@@ -10,6 +10,7 @@ import {
   imageBeritaAlumni,
   imageAgenda,
   imageGallery,
+  apiToken,
 } from '../const/env'
 import Axios from 'axios'
 import { userLoggedIn } from '../utils/helpers'
@@ -511,6 +512,36 @@ export const PostLogin = async (params) => {
   }
 }
 
+export const PutUpdateDataProfile = async (params) => {
+  try {
+    let body = {
+      error: false,
+      message: '',
+    }
+    const result = await Axios({
+      url: `${urlApi}/updateProfile`,
+      method: 'PUT',
+      data: params,
+      headers: {
+        apiToken: apiToken,
+        email: userLoggedIn().email,
+        token: userLoggedIn().token,
+      },
+    })
+    console.log('dapetnya ==>', result)
+    const { data } = result
+    if (data && data.StatusCode === 200) {
+      body.message = 'Update data berhasil'
+    } else {
+      body.error = true
+      body.message = 'Update data gagal, periksa data kembali sebelum disimpan'
+    }
+    return body
+  } catch (error) {
+    console.log('err ===>', error)
+  }
+}
+
 export const PostRegister = async (params) => {
   try {
     let body = {
@@ -665,7 +696,7 @@ export const ChangePassword = async (params) => {
   }
 }
 
-export const GetProfileMe = async (id) => {
+export const GetProfileMe = async () => {
   try {
     let body = {
       error: false,
@@ -673,9 +704,10 @@ export const GetProfileMe = async (id) => {
     }
     const result = await Axios({
       method: 'GET',
-      url: `${urlApi}/userAlumni/${id}`,
+      url: `${urlApi}/profile`,
       headers: {
-        ...WEB_HEADERS_POST_LOGOUT,
+        apiToken: apiToken,
+        type: 'user',
         token: userLoggedIn().token,
         email: userLoggedIn().email,
       },

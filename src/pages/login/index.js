@@ -44,6 +44,12 @@ export default function LoginSso() {
           Cookies.set('user_data_token', JSON.stringify(res && res.data.token))
           Cookies.set('user_data_id', JSON.stringify(res && res.data.id_user))
           Cookies.set('user_data_email', JSON.stringify(res && res.data.email))
+          Cookies.set(
+            'user_data_nama',
+            JSON.stringify(
+              res && res.data.alumni && res.data.alumni.nama_alumni,
+            ),
+          )
           Cookies.set('user_logged_in', true)
           window.localStorage.setItem(
             'user_data',

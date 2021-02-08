@@ -5,6 +5,7 @@ import {
   userLoggedIn,
   userLoggedOut,
   getBrowser,
+  splitUsername,
 } from '../../utils/helpers'
 import { ListBanner } from '../../api'
 import Link from '../link'
@@ -135,7 +136,7 @@ export default function Navbar({ location }) {
                       <li className="dropdown">
                         <a href="/#">
                           <i className="icon-user"></i>
-                          {userLoggedIn().email}
+                          {splitUsername()}
                         </a>
                         <ul className="dropdown-menu">
                           <li>

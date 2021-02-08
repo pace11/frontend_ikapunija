@@ -4,7 +4,8 @@ const urlApi = 'https://admin.ikapunija.com/api',
   imageBanner = 'https://admin.ikapunija.com/asset_image/banner',
   imageBeritaAlumni = 'https://admin.ikapunija.com/asset_image/berita_alumni',
   imageGallery = 'https://admin.ikapunija.com/asset_image/gallery',
-  imageKtp = 'https://admin.ikapunija.com/asset_image/user_alumni/ktp'
+  imageKtp = 'https://admin.ikapunija.com/asset_image/user_alumni/ktp',
+  imageProfil = 'https://admin.ikapunija.com/asset_image/user_alumni/profil'
 
 export {
   urlApi,
@@ -14,4 +15,5 @@ export {
   imageBeritaAlumni,
   imageGallery,
   imageKtp,
+  imageProfil,
 }

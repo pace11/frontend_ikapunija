@@ -56,3 +56,9 @@ export const getBrowser = () => {
     return 'another'
   }
 }
+
+export const splitUsername = () => {
+  const name = JSON.parse(Cookies.get('user_data_nama'))
+  const arr = name.split(' ')
+  return arr[0]
+}
