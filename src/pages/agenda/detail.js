@@ -78,7 +78,11 @@ export default function BeritaAlumniDetail() {
                                 {new Date(data.agenda_date).toDateString()}
                               </span>
                             </div>
-                            <p>{data.agenda_desc}</p>
+                            <div
+                              dangerouslySetInnerHTML={{
+                                __html: data.agenda_desc,
+                              }}
+                            />
                           </div>
                         </div>
                       </div>

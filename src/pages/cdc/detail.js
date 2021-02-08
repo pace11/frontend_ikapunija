@@ -98,7 +98,11 @@ export default function CdcDetail() {
                                 </span>
                               )}
                             </div>
-                            <p>{data.cdc_desc}</p>
+                            <div
+                              dangerouslySetInnerHTML={{
+                                __html: data.cdc_desc,
+                              }}
+                            />
                           </div>
                         </div>
                       </div>

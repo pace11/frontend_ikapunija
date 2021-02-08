@@ -10,7 +10,7 @@ import {
 import { imageKtp } from '../../const/env'
 import LoadingComponent from './loading-component'
 
-export default function Profile() {
+export default function EditProfile() {
   const [listRegion, setListRegion] = React.useState()
   const [profesi, setProfesi] = React.useState()
   const [jurusan, setJurusan] = React.useState()
@@ -58,8 +58,11 @@ export default function Profile() {
               <li>
                 <a href="/">Beranda</a>
               </li>
-              <li className="active">
+              <li>
                 <a href="/profil">Profilku</a>
+              </li>
+              <li className="active">
+                <a href="/profil/edit">Edit</a>
               </li>
             </ul>
           </div>
@@ -76,12 +79,6 @@ export default function Profile() {
                   <div className="col-lg-7 col-md-7 col-xs-12 center p-50 background-white b-r-6">
                     <div className="panel">
                       <div className="panel-body">
-                        <div className="row d-flex justify-content-end">
-                          <a href="/profil/edit" className="btn btn-xs">
-                            {' '}
-                            <i className="icon-edit"></i> Edit data
-                          </a>
-                        </div>
                         <div className="row">
                           <div className="col-md-6">
                             <div
@@ -97,7 +94,7 @@ export default function Profile() {
                               {data.foto_ktp ? (
                                 <img
                                   src={imageKtp + data.foto_profil}
-                                  alt=""
+                                  alt="image profil"
                                   onError={(e) => {
                                     e.target.src =
                                       'https://via.placeholder.com/150'
@@ -250,7 +247,7 @@ export default function Profile() {
                               {data.foto_ktp ? (
                                 <img
                                   src={imageKtp + data.foto_ktp}
-                                  alt=""
+                                  alt="image ktp"
                                   onError={(e) => {
                                     e.target.src =
                                       'https://via.placeholder.com/150'

@@ -1,8 +1,13 @@
 import React from 'react'
-import cookies from 'js-cookie'
 import { useRouteMatch } from 'react-router-dom'
-import { isLoggedIn, userLoggedIn, userLoggedOut } from '../../utils/helpers'
+import {
+  isLoggedIn,
+  userLoggedIn,
+  userLoggedOut,
+  getBrowser,
+} from '../../utils/helpers'
 import { ListBanner } from '../../api'
+import Link from '../link'
 import NavbarList from './navbar-list'
 
 export default function Navbar({ location }) {
@@ -10,31 +15,39 @@ export default function Navbar({ location }) {
   const [banner, setBanner] = React.useState()
 
   React.useEffect(() => {
-    const BANNER_LOCAL = cookies.get('list_banner')
+    let unmounted = false
+    const BANNER_LOCAL = window.localStorage.getItem('list_banner')
     async function FetchListBanner() {
-      if (BANNER_LOCAL && BANNER_LOCAL !== undefined) {
-        setBanner(JSON.parse(BANNER_LOCAL))
-        await ListBanner().then((res) => {
-          if (JSON.stringify(res) === BANNER_LOCAL) {
-            setBanner(JSON.parse(BANNER_LOCAL))
-          } else {
-            cookies.set('list_banner', JSON.stringify(res))
-            window.location.href = '/'
-          }
-        })
-      } else {
-        await ListBanner().then((res) => {
-          cookies.set('list_banner', JSON.stringify(res))
-          setBanner(res)
-        })
-        window.location.href = '/'
+      try {
+        if (BANNER_LOCAL && BANNER_LOCAL !== 'undefined') {
+          setBanner(JSON.parse(BANNER_LOCAL))
+          await ListBanner().then((res) => {
+            if (!unmounted) {
+              if (JSON.stringify(res) === BANNER_LOCAL) {
+                setBanner(JSON.parse(BANNER_LOCAL))
+              } else {
+                window.localStorage.setItem('list_banner', JSON.stringify(res))
+              }
+            }
+          })
+        } else {
+          await ListBanner().then((res) => {
+            if (!unmounted) {
+              window.localStorage.setItem('list_banner', JSON.stringify(res))
+              setBanner(res)
+            }
+          })
+        }
+      } catch (error) {
+        console.log('err ===>', error)
       }
     }
     FetchListBanner()
+    return () => (unmounted = true)
   }, [])
 
   return (
-    <div>
+    <React.Fragment>
       <header
         id="header"
         className="dark submenu-light"
@@ -122,7 +135,7 @@ export default function Navbar({ location }) {
                       <li className="dropdown">
                         <a href="/#">
                           <i className="icon-user"></i>
-                          {userLoggedIn().username}
+                          {userLoggedIn().email}
                         </a>
                         <ul className="dropdown-menu">
                           <li>
@@ -161,27 +174,32 @@ export default function Navbar({ location }) {
             className="inspiro-slider slider-fullscreen dots-creative"
             data-fade="true"
           >
-            {banner &&
+            {banner && banner !== 'undefined' && getBrowser() !== 'safari' ? (
               banner.map((item, idx) => (
                 <div
                   key={idx}
-                  className="slide kenburns"
+                  className="slide"
                   data-bg-image={item.banner_img_url}
                 >
                   <div className="bg-overlay"></div>
                   <div className="container">
                     <div className="slide-captions text-center text-light">
-                      <h1>{item.banner_title}</h1>
-                      <p>-- deskripsi --</p>
-                      <div>
-                        <a href="/#" className="btn scroll-to">
-                          Explore more
-                        </a>
-                      </div>
+                      {item.banner_title && <h1>{item.banner_title}</h1>}
+                      {item.banner_link && (
+                        <Link url={`https://www.google.com`} />
+                      )}
                     </div>
                   </div>
                 </div>
-              ))}
+              ))
+            ) : (
+              <div
+                className="slide"
+                data-bg-image={require('../../assets/img/banner_2.png').default}
+              >
+                <div className="bg-overlay"></div>
+              </div>
+            )}
           </div>
         </React.Fragment>
       ) : (
@@ -227,6 +245,6 @@ export default function Navbar({ location }) {
           }
         `}
       </style>
-    </div>
+    </React.Fragment>
   )
 }

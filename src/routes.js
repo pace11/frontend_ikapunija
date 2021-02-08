@@ -25,6 +25,7 @@ import Register from './pages/register'
 import LupaPassword from './pages/lupa-password'
 import VerifikasiPassword from './pages/verifikasi-password'
 import Profil from './pages/profil'
+import ProfilEdit from './pages/profil/edit-profil'
 
 const Routes = [
   {
@@ -94,6 +95,12 @@ const Routes = [
     exact: true,
     layout: Layout,
     component: Profil,
+  },
+  {
+    path: '/profil/edit',
+    exact: true,
+    layout: Layout,
+    component: ProfilEdit,
   },
   {
     path: '/tentang-kami/visi-misi',

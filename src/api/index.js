@@ -12,6 +12,7 @@ import {
   imageGallery,
 } from '../const/env'
 import Axios from 'axios'
+import { userLoggedIn } from '../utils/helpers'
 
 export const ListRegion = async () => {
   try {
@@ -88,23 +89,24 @@ export const ListProdi = async (id) => {
 
 export const ListBanner = async () => {
   try {
-    const options = {
+    const result = await Axios({
       method: 'GET',
-    }
-    const result = await fetch(`${urlApi}/banner`, options)
-    const { status } = result
-    const response = result.json()
-    if (status === 200) {
-      const { Data } = await response
+      url: `${urlApi}/banner`,
+    })
+    const { data } = result
+    if (data && data.StatusCode === 200) {
       const bannerData =
-        Data &&
-        Data.map((item) => ({
+        data &&
+        data.Data &&
+        data.Data.map((item) => ({
           banner_id: item.id,
           banner_img_url: `${imageBanner}/${item.banner}`,
           banner_title: item.judul,
           banner_link: item.link,
         }))
       return bannerData
+    } else {
+      return 'undefined'
     }
   } catch (error) {
     console.log('err ===>', error)
@@ -306,7 +308,7 @@ export const ListDetailAgenda = async (id) => {
         agenda_title: Data.judul,
         agenda_subtitle: Data.review_singkat,
         agenda_desc: Data.isi,
-        agenda_img_url: `${imageBeritaAlumni}/${Data.foto}`,
+        agenda_img_url: `${imageAgenda}/${Data.foto}`,
         agenda_priority: Data.priority,
         agenda_date: Data.tanggal,
       }
@@ -656,6 +658,33 @@ export const ChangePassword = async (params) => {
     } else {
       body.error = true
       body.message = data && data.Message
+    }
+    return body
+  } catch (error) {
+    console.log('err ===>', error)
+  }
+}
+
+export const GetProfileMe = async (id) => {
+  try {
+    let body = {
+      error: false,
+      data: [],
+    }
+    const result = await Axios({
+      method: 'GET',
+      url: `${urlApi}/userAlumni/${id}`,
+      headers: {
+        ...WEB_HEADERS_POST_LOGOUT,
+        token: userLoggedIn().token,
+        email: userLoggedIn().email,
+      },
+    })
+    const { data } = result
+    if (data && data.StatusCode === 200) {
+      body.data = data && data.Data
+    } else {
+      body.error = true
     }
     return body
   } catch (error) {

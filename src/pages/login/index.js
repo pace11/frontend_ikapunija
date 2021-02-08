@@ -41,12 +41,14 @@ export default function LoginSso() {
       if (res && !res.error) {
         setIsLoading(res.error)
         setTimeout(() => {
-          Cookies.set(
-            'user_data_username',
-            JSON.stringify(res && res.data.email),
-          )
           Cookies.set('user_data_token', JSON.stringify(res && res.data.token))
+          Cookies.set('user_data_id', JSON.stringify(res && res.data.id_user))
+          Cookies.set('user_data_email', JSON.stringify(res && res.data.email))
           Cookies.set('user_logged_in', true)
+          window.localStorage.setItem(
+            'user_data',
+            JSON.stringify(res && res.data),
+          )
           window.location.href = '/'
         }, 2000)
       } else {

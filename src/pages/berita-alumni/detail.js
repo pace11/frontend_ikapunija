@@ -86,7 +86,11 @@ export default function BeritaAlumniDetail() {
                                 </span>
                               )}
                             </div>
-                            <p>{data.news_desc}</p>
+                            <div
+                              dangerouslySetInnerHTML={{
+                                __html: data.news_desc,
+                              }}
+                            />
                           </div>
                         </div>
                       </div>
