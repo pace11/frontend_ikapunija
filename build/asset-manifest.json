@@ -1,14 +1,15 @@
 {
   "files": {
-    "main.js": "/static/js/main.9027dd20.chunk.js",
-    "main.js.map": "/static/js/main.9027dd20.chunk.js.map",
+    "main.js": "/static/js/main.3aa4f2de.chunk.js",
+    "main.js.map": "/static/js/main.3aa4f2de.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.cfdc93b6.js",
     "runtime-main.js.map": "/static/js/runtime-main.cfdc93b6.js.map",
-    "static/js/2.dabfa5bd.chunk.js": "/static/js/2.dabfa5bd.chunk.js",
-    "static/js/2.dabfa5bd.chunk.js.map": "/static/js/2.dabfa5bd.chunk.js.map",
+    "static/js/2.cd14b50c.chunk.js": "/static/js/2.cd14b50c.chunk.js",
+    "static/js/2.cd14b50c.chunk.js.map": "/static/js/2.cd14b50c.chunk.js.map",
     "index.html": "/index.html",
-    "static/js/2.dabfa5bd.chunk.js.LICENSE.txt": "/static/js/2.dabfa5bd.chunk.js.LICENSE.txt",
+    "static/js/2.cd14b50c.chunk.js.LICENSE.txt": "/static/js/2.cd14b50c.chunk.js.LICENSE.txt",
     "static/media/2.jpg": "/static/media/2.2e570aea.jpg",
+    "static/media/banner_2.png": "/static/media/banner_2.5a81b0fd.png",
     "static/media/empty-user.png": "/static/media/empty-user.16b74247.png",
     "static/media/logo-ika-hitam.png": "/static/media/logo-ika-hitam.ec9ca717.png",
     "static/media/logo-ika-port.png": "/static/media/logo-ika-port.3d9cc2c4.png",
@@ -16,7 +17,7 @@
   },
   "entrypoints": [
     "static/js/runtime-main.cfdc93b6.js",
-    "static/js/2.dabfa5bd.chunk.js",
-    "static/js/main.9027dd20.chunk.js"
+    "static/js/2.cd14b50c.chunk.js",
+    "static/js/main.3aa4f2de.chunk.js"
   ]
 }
