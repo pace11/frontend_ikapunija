@@ -35,7 +35,7 @@ export default function Profile() {
       await GetProfileMe().then((res) => {
         setIsLoading(false)
         const { data } = res
-        setData(data)
+        setData([data])
         if (data) {
           ListProdi(data.jurusan_id).then((res) => {
             setProdi(res && res.Data)
@@ -69,7 +69,7 @@ export default function Profile() {
         <div className="container">
           {!data && isLoading ? (
             <LoadingComponent />
-          ) : data ? (
+          ) : data && data.length ? (
             <div>
               <div className="row">
                 <div className="col-lg-7 col-md-7 col-xs-12 center p-50 background-white b-r-6">
@@ -93,9 +93,9 @@ export default function Profile() {
                             }}
                           >
                             <label>Foto Profil </label>
-                            {data.foto_ktp ? (
+                            {data[0].foto_ktp ? (
                               <img
-                                src={`${imageProfil}/${data.foto_profil}`}
+                                src={`${imageProfil}/${data[0].foto_profil}`}
                                 alt=""
                                 onError={(e) => {
                                   e.target.src =
@@ -112,11 +112,13 @@ export default function Profile() {
                         <div className="col-md-6">
                           <div className="form-group">
                             <label>Nama Alumni </label>
-                            <p style={{ color: '#000' }}>{data.nama_alumni}</p>
+                            <p style={{ color: '#000' }}>
+                              {data[0].nama_alumni}
+                            </p>
                           </div>
                           <div className="form-group">
                             <label>Email </label>
-                            <p style={{ color: '#000' }}>{data.email}</p>
+                            <p style={{ color: '#000' }}>{data[0].email}</p>
                           </div>
                         </div>
                       </div>
@@ -124,7 +126,7 @@ export default function Profile() {
                         <div className="col-md-12">
                           <div className="form-group">
                             <label>Alamat </label>
-                            <p style={{ color: '#000' }}>{data.alamat}</p>
+                            <p style={{ color: '#000' }}>{data[0].alamat}</p>
                           </div>
                         </div>
                       </div>
@@ -132,13 +134,13 @@ export default function Profile() {
                         <div className="col-md-6">
                           <div className="form-group">
                             <label>No Hp </label>
-                            <p style={{ color: '#000' }}>{data.contact}</p>
+                            <p style={{ color: '#000' }}>{data[0].contact}</p>
                           </div>
                         </div>
                         <div className="col-md-6">
                           <div className="form-group">
                             <label>Angkatan </label>
-                            <p style={{ color: '#000' }}>{data.angkatan}</p>
+                            <p style={{ color: '#000' }}>{data[0].angkatan}</p>
                           </div>
                         </div>
                       </div>
@@ -150,7 +152,7 @@ export default function Profile() {
                             <p style={{ color: '#000' }}>
                               {jurusan &&
                                 jurusan.filter(
-                                  (item) => item.id === data.jurusan_id,
+                                  (item) => item.id === data[0].jurusan_id,
                                 )[0].nama_jurusan}
                             </p>
                           </div>
@@ -161,7 +163,7 @@ export default function Profile() {
                             <p style={{ color: '#000' }}>
                               {prodi &&
                                 prodi.filter(
-                                  (item) => item.id === data.prodi_id,
+                                  (item) => item.id === data[0].prodi_id,
                                 )[0].nama_prodi}
                             </p>
                           </div>
@@ -175,7 +177,8 @@ export default function Profile() {
                             <p style={{ color: '#000' }}>
                               {listRegion &&
                                 listRegion.filter(
-                                  (item) => item.alpha2Code === data.negara_id,
+                                  (item) =>
+                                    item.alpha2Code === data[0].negara_id,
                                 )[0].name}
                             </p>
                           </div>
@@ -183,7 +186,7 @@ export default function Profile() {
                         <div className="col-md-6">
                           <div className="form-group">
                             <label>Hobi</label>
-                            <p style={{ color: '#000' }}>{data.hobi}</p>
+                            <p style={{ color: '#000' }}>{data[0].hobi}</p>
                           </div>
                         </div>
                       </div>
@@ -195,7 +198,7 @@ export default function Profile() {
                             <p style={{ color: '#000' }}>
                               {profesi &&
                                 profesi.filter(
-                                  (item) => item.id === data.profesi_id,
+                                  (item) => item.id === data[0].profesi_id,
                                 )[0].nama_profesi}
                             </p>
                           </div>
@@ -205,26 +208,32 @@ export default function Profile() {
                             <div className="form-group">
                               <label>Jabatan</label>
                               <p style={{ color: '#000' }}>
-                                {data.nama_profesi ? data.nama_profesi : '-'}
+                                {data[0].nama_profesi
+                                  ? data[0].nama_profesi
+                                  : '-'}
                               </p>
                             </div>
                             <div className="form-group">
                               <label>Nama Perusahaan/Bisnis </label>
                               <p style={{ color: '#000' }}>
-                                {data.nama_profesi ? data.nama_profesi : '-'}
+                                {data[0].nama_profesi
+                                  ? data[0].nama_profesi
+                                  : '-'}
                               </p>
                             </div>
 
                             <div className="form-group">
                               <label>Jumlah Karyawan yang dimiliki </label>
                               <p style={{ color: '#000' }}>
-                                {data.jumlah_pegawai}
+                                {data[0].jumlah_pegawai}
                               </p>
                             </div>
 
                             <div className="form-group">
                               <label>Pendapatan </label>
-                              <p style={{ color: '#000' }}>{data.pendapatan}</p>
+                              <p style={{ color: '#000' }}>
+                                {data[0].pendapatan}
+                              </p>
                             </div>
                           </div>
                         </div>
@@ -233,7 +242,7 @@ export default function Profile() {
                         <div className="col-md-12">
                           <div className="form-group">
                             <label>NIK </label>
-                            <p style={{ color: '#000' }}>{data.nik}</p>
+                            <p style={{ color: '#000' }}>{data[0].nik}</p>
                           </div>
                         </div>
                       </div>
@@ -241,9 +250,9 @@ export default function Profile() {
                         <div className="col-md-12">
                           <div className="form-group">
                             <label>Foto KTP </label>
-                            {data.foto_ktp ? (
+                            {data[0].foto_ktp ? (
                               <img
-                                src={`${imageKtp}/${data.foto_ktp}`}
+                                src={`${imageKtp}/${data[0].foto_ktp}`}
                                 alt=""
                                 onError={(e) => {
                                   e.target.src =
