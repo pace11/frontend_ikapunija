@@ -75,7 +75,7 @@ export default function GaleriDetail() {
                           >
                             <img
                               src={item.galeri_image_url}
-                              alt="img-galeri"
+                              alt="galeri-list"
                               onError={(e) => {
                                 e.target.src = 'https://via.placeholder.com/150'
                               }}

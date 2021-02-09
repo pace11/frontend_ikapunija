@@ -61,7 +61,7 @@ export default function BeritaAlumniDetail() {
                           <div className="post-image">
                             <a href="/#">
                               <img
-                                alt={data.notice_img_url}
+                                alt="img-pengumuman-detail"
                                 src={data.notice_img_url}
                                 onError={(e) => {
                                   e.target.src =

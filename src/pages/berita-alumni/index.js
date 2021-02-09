@@ -55,8 +55,8 @@ export default function BeritaAlumni() {
                       <div className="post-image">
                         <a href={`${url}/detail/${item.news_id}`}>
                           <img
-                            alt={`${item.news_img_url}`}
-                            src={`${item.news_img_url}`}
+                            alt="img-berita-list"
+                            src={item.news_img_url}
                             onError={(e) => {
                               e.target.src = 'https://via.placeholder.com/150'
                             }}

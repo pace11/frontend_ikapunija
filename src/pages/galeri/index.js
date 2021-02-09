@@ -70,9 +70,12 @@ export default function Galeri() {
                         href={`${url}/detail/${item.galeri_id}`}
                       >
                         <img
-                          src={require('../../assets/img/album.png').default}
-                          alt="img-galeri"
+                          src={item.galeri_img_cover}
+                          alt="galeri-cover"
                           style={{ cursor: 'pointer' }}
+                          onError={(e) => {
+                            e.target.src = require('../../assets/img/album.png').default
+                          }}
                         />
                       </a>
                       <p style={{ marginBottom: '20px' }}>

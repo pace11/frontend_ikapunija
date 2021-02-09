@@ -346,6 +346,7 @@ export const ListGaleri = async () => {
         Data.map((item) => ({
           galeri_id: item.id,
           galeri_title: item.nama,
+          galeri_img_cover: `${imageGallery}/${item.logo}`,
         }))
       return {
         data: galeri,

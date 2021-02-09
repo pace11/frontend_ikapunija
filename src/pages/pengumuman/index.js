@@ -55,7 +55,7 @@ export default function Pengumuman() {
                       <div className="post-image">
                         <a href={`${url}/detail/${item.notice_id}`}>
                           <img
-                            alt={item.notice_img_url}
+                            alt="img-pengumuman-list"
                             src={item.notice_img_url}
                             onError={(e) => {
                               e.target.src = 'https://via.placeholder.com/150'

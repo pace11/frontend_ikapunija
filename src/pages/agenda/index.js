@@ -55,7 +55,7 @@ export default function Agenda() {
                       <div className="post-image">
                         <a href={`${url}/detail/${item.agenda_id}`}>
                           <img
-                            alt={item.agenda_img_url}
+                            alt="img-agenda-list"
                             src={item.agenda_img_url}
                             onError={(e) => {
                               e.target.src = 'https://via.placeholder.com/150'
