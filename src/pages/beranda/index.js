@@ -28,7 +28,16 @@ export default function Home() {
                       alignItems: 'center',
                     }}
                   >
-                    <img src={item.img_url} alt="" width="180px" />
+                    <div
+                      style={{
+                        width: '120px',
+                        height: '120px',
+                        backgroundImage: `url(${item.img_url})`,
+                        backgroundSize: 'cover',
+                        backgroundPosition: 'center',
+                        backgroundRepeat: 'no-repeat',
+                      }}
+                    ></div>
                   </div>
                 </div>
               ))}

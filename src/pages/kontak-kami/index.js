@@ -62,7 +62,7 @@ export default function KontakKami() {
     <React.Fragment>
       <section
         id="page-title"
-        data-bg-parallax="https://inspirothemes.com/polo/images/parallax/5.jpg"
+        data-bg-parallax={require('../../assets/img/5.jpg').default}
       >
         <div className="container">
           <div className="page-title">

@@ -6,7 +6,6 @@ import { PulseLoader } from 'react-spinners'
 
 export default function LoginSso() {
   const location = useLocation()
-  const query = new URLSearchParams(location.search)
 
   const [data, setData] = React.useState({
     email: '',
@@ -73,35 +72,35 @@ export default function LoginSso() {
   }
 
   React.useEffect(() => {
-    if (query.get('status') === 'success') {
-      setShowMessage2({
-        ...showMessage2,
-        show: true,
-        error: false,
-        message: `Verifikasi akun berhasil. harap menunggu aktivasi akun dari Admin agar akun dapat digunakan`,
-      })
-      setTimeout(() => {
+    const query = new URLSearchParams(location.search)
+    async function CheckStatusParam() {
+      if (query.get('status') === 'success') {
         setShowMessage2({
-          ...showMessage2,
-          show: false,
+          show: true,
+          error: false,
+          message: `Verifikasi akun berhasil. harap menunggu aktivasi akun dari Admin agar akun dapat digunakan`,
         })
-      }, 5000)
-    }
-    if (query.get('status') === 'failed') {
-      setShowMessage2({
-        ...showMessage2,
-        show: true,
-        error: true,
-        message: `<strong><i className="fa fa-info-circle"></i> Info!</strong> Verifikasi akun gagal. informasi lebih lanjut bisa menghubungi Admin melalui <a href="/kontak-kami" style="color:#000;">Kontak Kami</a>`,
-      })
-      setTimeout(() => {
+        setTimeout(() => {
+          setShowMessage2({
+            show: false,
+          })
+        }, 5000)
+      }
+      if (query.get('status') === 'failed') {
         setShowMessage2({
-          ...showMessage2,
-          show: false,
+          show: true,
+          error: true,
+          message: `<strong><i className="fa fa-info-circle"></i> Info!</strong> Verifikasi akun gagal. untuk informasi lebih lanjut bisa menghubungi Admin melalui menu <a href="/kontak-kami" style="color:#000;">Kontak Kami</a>`,
         })
-      }, 8000)
+        setTimeout(() => {
+          setShowMessage2({
+            show: false,
+          })
+        }, 8000)
+      }
     }
-  }, [])
+    CheckStatusParam()
+  }, [location.search])
 
   return (
     <div className="container">
