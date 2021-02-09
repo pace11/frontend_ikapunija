@@ -100,6 +100,10 @@ const Data = {
       id: 1,
       img_url: require('../assets/sponsor/YPNJ.png').default,
     },
+    {
+      id: 2,
+      img_url: require('../assets/sponsor/PNJ.png').default,
+    },
   ],
 }
 

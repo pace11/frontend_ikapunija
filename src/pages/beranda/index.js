@@ -17,7 +17,6 @@ export default function Home() {
           className="heading-text heading-section text-center m-b-40"
           data-animate="fadeInUp"
         >
-          <h4 style={{ color: '#484848' }}>SPONSORSHIP</h4>
           <Slider {...settings}>
             {ImgSponsor &&
               ImgSponsor.logo_sponsorship.map((item, idx) => (
