@@ -50,7 +50,7 @@ export default function Galeri() {
         <div className="container">
           {isLoading ? (
             <LoadingComponent />
-          ) : (
+          ) : data && data.length ? (
             <div className="row">
               <div className="col-lg-12 col-md-12 col-xs-12">
                 <div
@@ -59,30 +59,34 @@ export default function Galeri() {
                   data-item="grid-item"
                   data-lightbox="gallery"
                 >
-                  {data &&
-                    data.map((item, idx) => (
-                      <div
-                        key={String(idx)}
-                        className="grid-item"
-                        style={{ padding: '10px' }}
+                  {data.map((item, idx) => (
+                    <div
+                      key={String(idx)}
+                      className="grid-item"
+                      style={{ padding: '10px' }}
+                    >
+                      <a
+                        className="image-hover-zoom"
+                        href={`${url}/detail/${item.galeri_id}`}
                       >
-                        <a
-                          className="image-hover-zoom"
-                          href={`${url}/detail/${item.galeri_id}`}
-                        >
-                          <img
-                            src={require('../../assets/img/album.png').default}
-                            alt="img-galeri"
-                            style={{ cursor: 'pointer' }}
-                          />
-                        </a>
-                        <p style={{ marginBottom: '20px' }}>
-                          {item.galeri_title}
-                        </p>
-                      </div>
-                    ))}
+                        <img
+                          src={require('../../assets/img/album.png').default}
+                          alt="img-galeri"
+                          style={{ cursor: 'pointer' }}
+                        />
+                      </a>
+                      <p style={{ marginBottom: '20px' }}>
+                        {item.galeri_title}
+                      </p>
+                    </div>
+                  ))}
                 </div>
               </div>
+            </div>
+          ) : (
+            <div className="text-center">
+              <i className="far fa-window-close fa-3x"></i>
+              <p style={{ fontSize: '18x' }}>Belum ada Galeri</p>
             </div>
           )}
         </div>

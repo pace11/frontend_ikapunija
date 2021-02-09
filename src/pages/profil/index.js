@@ -265,8 +265,8 @@ export default function Profile() {
             </div>
           ) : (
             <div className="text-center">
-              <i className="far fa-sad-tear fa-2x"></i>
-              <p>Data tidak ditemukan</p>
+              <i className="far fa-sad-tear fa-3x"></i>
+              <p style={{ fontSize: '18x' }}>Data tidak ditemukan</p>
             </div>
           )}
         </div>

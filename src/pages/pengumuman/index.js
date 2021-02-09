@@ -45,75 +45,57 @@ export default function Pengumuman() {
         </div>
         {isLoading ? (
           <LoadingComponent />
-        ) : (
+        ) : data && !data.length ? (
           <div className="row">
             <div className="col-lg-12 col-md-12 col-xs-12">
               <div id="blog" className="post-thumbnails">
-                {data &&
-                  data.map((item, idx) => (
-                    <div key={String(idx)} className="post-item">
-                      <div className="post-item-wrap">
-                        <div className="post-image">
-                          <a href={`${url}/detail/${item.notice_id}`}>
-                            <img
-                              alt={item.notice_img_url}
-                              src={item.notice_img_url}
-                              onError={(e) => {
-                                e.target.src = 'https://via.placeholder.com/150'
-                              }}
-                            />
-                          </a>
-                          {item.notice_category && (
-                            <span className="post-meta-category">
-                              <a href="/#">{item.notice_category.nama}</a>
-                            </span>
-                          )}
-                        </div>
-                        <div className="post-item-description">
-                          <span className="post-meta-date">
-                            <i className="fa fa-calendar-o"></i>
-                            {new Date(item.notice_date).toDateString()}
+                {data.map((item, idx) => (
+                  <div key={String(idx)} className="post-item">
+                    <div className="post-item-wrap">
+                      <div className="post-image">
+                        <a href={`${url}/detail/${item.notice_id}`}>
+                          <img
+                            alt={item.notice_img_url}
+                            src={item.notice_img_url}
+                            onError={(e) => {
+                              e.target.src = 'https://via.placeholder.com/150'
+                            }}
+                          />
+                        </a>
+                        {item.notice_category && (
+                          <span className="post-meta-category">
+                            <a href="/#">{item.notice_category.nama}</a>
                           </span>
-                          <h2>
-                            <a href={`${url}/detail/${item.notice_id}`}>
-                              {item.notice_title}
-                            </a>
-                          </h2>
-                          <p>{item.notice_desc}</p>
-                          <a
-                            href={`${url}/detail/${item.notice_id}`}
-                            className="item-link"
-                          >
-                            Read More <i className="icon-chevron-right"></i>
+                        )}
+                      </div>
+                      <div className="post-item-description">
+                        <span className="post-meta-date">
+                          <i className="fa fa-calendar-o"></i>
+                          {new Date(item.notice_date).toDateString()}
+                        </span>
+                        <h2>
+                          <a href={`${url}/detail/${item.notice_id}`}>
+                            {item.notice_title}
                           </a>
-                        </div>
+                        </h2>
+                        <p>{item.notice_desc}</p>
+                        <a
+                          href={`${url}/detail/${item.notice_id}`}
+                          className="item-link"
+                        >
+                          Read More <i className="icon-chevron-right"></i>
+                        </a>
                       </div>
                     </div>
-                  ))}
+                  </div>
+                ))}
               </div>
             </div>
-            {/* <div className="sidebar sticky-sidebar col-lg-3">
-            <div className="widget ">
-              <h4 className="widget-title">Berita Alumni</h4>
-              <div className="post-thumbnail-list">
-                {data &&
-                  data.map((item, idx) => (
-                    <div key={String(idx)} className="post-thumbnail-entry">
-                      <img alt="" src={item.image_url_post} />
-                      <div className="post-thumbnail-content">
-                        <a href="/#">{item.title_post}</a>
-                        <span className="post-date">
-                          <i className="icon-calendar"></i> {item.date_post}
-                        </span>
-                        <span className="post-category">
-                          <i className="fa fa-tag"></i> {item.tag_post}
-                        </span>
-                      </div>
-                    </div>
-                  ))}
-              </div>
-            </div>
-          </div> */}
+          </div>
+        ) : (
+          <div className="text-center">
+            <i className="far fa-window-close fa-3x"></i>
+            <p style={{ fontSize: '18x' }}>Belum ada Pengumuman</p>
           </div>
         )}
       </div>

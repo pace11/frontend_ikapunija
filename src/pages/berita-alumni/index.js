@@ -45,53 +45,57 @@ export default function BeritaAlumni() {
         </div>
         {isLoading ? (
           <LoadingComponent />
-        ) : (
+        ) : data && data.length ? (
           <div className="row">
             <div className="col-lg-12 col-md-12 col-xs-12">
               <div id="blog" className="post-thumbnails">
-                {data &&
-                  data.map((item, idx) => (
-                    <div key={String(idx)} className="post-item">
-                      <div className="post-item-wrap">
-                        <div className="post-image">
-                          <a href={`${url}/detail/${item.news_id}`}>
-                            <img
-                              alt={`${item.news_img_url}`}
-                              src={`${item.news_img_url}`}
-                              onError={(e) => {
-                                e.target.src = 'https://via.placeholder.com/150'
-                              }}
-                            />
-                          </a>
-                          {item.news_category && (
-                            <span className="post-meta-category">
-                              <a href="/#">{item.news_category.nama}</a>
-                            </span>
-                          )}
-                        </div>
-                        <div className="post-item-description">
-                          <span className="post-meta-date">
-                            <i className="fa fa-calendar-o"></i>
-                            {new Date(item.news_date).toDateString()}
+                {data.map((item, idx) => (
+                  <div key={String(idx)} className="post-item">
+                    <div className="post-item-wrap">
+                      <div className="post-image">
+                        <a href={`${url}/detail/${item.news_id}`}>
+                          <img
+                            alt={`${item.news_img_url}`}
+                            src={`${item.news_img_url}`}
+                            onError={(e) => {
+                              e.target.src = 'https://via.placeholder.com/150'
+                            }}
+                          />
+                        </a>
+                        {item.news_category && (
+                          <span className="post-meta-category">
+                            <a href="/#">{item.news_category.nama}</a>
                           </span>
-                          <h2>
-                            <a href={`${url}/detail/${item.news_id}`}>
-                              {item.news_title}
-                            </a>
-                          </h2>
-                          <p>{item.news_desc}</p>
-                          <a
-                            href={`${url}/detail/${item.news_id}`}
-                            className="item-link"
-                          >
-                            Read More <i className="icon-chevron-right"></i>
+                        )}
+                      </div>
+                      <div className="post-item-description">
+                        <span className="post-meta-date">
+                          <i className="fa fa-calendar-o"></i>
+                          {new Date(item.news_date).toDateString()}
+                        </span>
+                        <h2>
+                          <a href={`${url}/detail/${item.news_id}`}>
+                            {item.news_title}
                           </a>
-                        </div>
+                        </h2>
+                        <p>{item.news_desc}</p>
+                        <a
+                          href={`${url}/detail/${item.news_id}`}
+                          className="item-link"
+                        >
+                          Read More <i className="icon-chevron-right"></i>
+                        </a>
                       </div>
                     </div>
-                  ))}
+                  </div>
+                ))}
               </div>
             </div>
+          </div>
+        ) : (
+          <div className="text-center">
+            <i className="far fa-window-close fa-3x"></i>
+            <p style={{ fontSize: '18x' }}>Belum ada Berita ALumni</p>
           </div>
         )}
       </div>

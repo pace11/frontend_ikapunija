@@ -36,8 +36,19 @@ export default function StrukturIkapunija() {
             </div>
             <div className="d-flex row team-members m-b-40 justify-content-center">
               <div className="col-lg-4 col-md-4">
-                <div className="team-member">
-                  <div className="team-image">
+                <div
+                  className="team-member"
+                  style={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    flexDirection: 'column',
+                  }}
+                >
+                  <div
+                    className="team-image"
+                    style={{ width: '180px', borderRadius: '15px' }}
+                  >
                     <img src={struktur_dpa.layer_1[0].img_url} alt="" />
                   </div>
                   <div className="team-desc">
@@ -72,8 +83,19 @@ export default function StrukturIkapunija() {
                     key={String(idx)}
                     className="col-lg-4 col-md-4 col-xs-12"
                   >
-                    <div className="team-member">
-                      <div className="team-image">
+                    <div
+                      className="team-member"
+                      style={{
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        flexDirection: 'column',
+                      }}
+                    >
+                      <div
+                        className="team-image"
+                        style={{ width: '180px', borderRadius: '15px' }}
+                      >
                         <img src={item.img_url} alt="" />
                       </div>
                       <div className="team-desc">
