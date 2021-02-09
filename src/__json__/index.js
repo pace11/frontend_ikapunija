@@ -95,6 +95,12 @@ const Data = {
       },
     ],
   },
+  logo_sponsorship: [
+    {
+      id: 1,
+      img_url: require('../assets/sponsor/YPNJ.png').default,
+    },
+  ],
 }
 
 export default Data
