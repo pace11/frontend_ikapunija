@@ -25,6 +25,7 @@ export default function Home() {
                     style={{
                       display: 'flex',
                       justifyContent: 'center',
+                      alignItems: 'center',
                     }}
                   >
                     <img src={item.img_url} alt="" width="180px" />
