@@ -1,11 +1,6 @@
 import React from 'react'
 import { useRouteMatch } from 'react-router-dom'
-import {
-  isLoggedIn,
-  userLoggedOut,
-  getBrowser,
-  splitUsername,
-} from '../../utils/helpers'
+import { isLoggedIn, userLoggedOut, splitUsername } from '../../utils/helpers'
 import { ListBanner } from '../../api'
 import Link from '../link'
 import NavbarList from './navbar-list'
@@ -174,7 +169,7 @@ export default function Navbar({ location }) {
             className="inspiro-slider slider-fullscreen dots-creative"
             data-fade="true"
           >
-            {banner && banner !== 'undefined' && getBrowser() !== 'safari' ? (
+            {banner && banner !== 'undefined' ? (
               banner.map((item, idx) => (
                 <div
                   key={idx}

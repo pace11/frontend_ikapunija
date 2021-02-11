@@ -46,6 +46,11 @@ export default function Home() {
       </div>
       <style>
         {`
+          button.slick-arrow.slick-next,
+          button.slick-arrow.slick-prev {
+            width: auto;
+            height: auto;
+          }
           button.slick-arrow.slick-next:before,
           button.slick-arrow.slick-prev:before {
             font-size: 30px !important;
