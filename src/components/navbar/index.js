@@ -180,9 +180,7 @@ export default function Navbar({ location }) {
                   <div className="container">
                     <div className="slide-captions text-center text-light">
                       {item.banner_title && <h1>{item.banner_title}</h1>}
-                      {item.banner_link && (
-                        <Link url={`https://www.google.com`} />
-                      )}
+                      {item.banner_link && <Link url={item.banner_link} />}
                     </div>
                   </div>
                 </div>
