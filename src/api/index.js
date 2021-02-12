@@ -103,6 +103,7 @@ export const ListBanner = async () => {
           banner_id: item.id,
           banner_img_url: `${imageBanner}/${item.banner}`,
           banner_title: item.judul,
+          banner_desc: item.desc_singkat,
           banner_link: item.link,
         }))
       return bannerData
