@@ -103,85 +103,124 @@ export default function LoginSso() {
   }, [location.search])
 
   return (
-    <div className="container">
-      <div>
-        <div className="text-center mb-3">
-          <a href="/" className="logo">
-            <img
-              src={require('../../assets/img/logo-ika-putih.png').default}
-              alt="ikapunija logo"
-              width="300px"
-            />
-          </a>
-        </div>
-        <div className="row">
-          <div className="col-lg-5 center p-50 background-white b-r-6">
-            {showMessage.show && (
-              <div
-                role="alert"
-                className={`alert ${
-                  showMessage.error ? 'alert-danger' : 'alert-info'
-                } alert-dismissible`}
-              >
-                <strong>
-                  <i className="fa fa-info-circle"></i> Info!
-                </strong>{' '}
-                {showMessage.message}
-              </div>
-            )}
-            {showMessage2.show && (
-              <div
-                role="alert"
-                className={`alert ${
-                  showMessage2.error ? 'alert-danger' : 'alert-info'
-                } alert-dismissible`}
-              >
+    <section
+      style={{
+        backgroundImage: `url(${require('../../assets/img/2.jpg').default})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+        height: '100vh',
+      }}
+    >
+      <div
+        style={{
+          position: 'fixed',
+          backgroundColor: '#27bebe',
+          opacity: '0.3',
+          top: 0,
+          bottom: 0,
+          left: 0,
+          right: 0,
+          zIndex: '-1',
+        }}
+      ></div>
+      <div className="container">
+        <div>
+          <div className="row">
+            <div className="text-center mb-3 col-md-12 col-lg-12 col-xs-12">
+              <a href="/" className="logo">
+                <img
+                  className="logo-ikapunija"
+                  src={require('../../assets/img/logo-ika-putih.png').default}
+                  alt="ikapunija logo"
+                  width="300px"
+                />
+              </a>
+            </div>
+          </div>
+          <div className="row">
+            <div className="col-lg-5 center p-50 background-white b-r-6">
+              {showMessage.show && (
                 <div
-                  dangerouslySetInnerHTML={{ __html: showMessage2.message }}
+                  role="alert"
+                  className={`alert ${
+                    showMessage.error ? 'alert-danger' : 'alert-info'
+                  } alert-dismissible`}
+                >
+                  <strong>
+                    <i className="fa fa-info-circle"></i> Info!
+                  </strong>{' '}
+                  {showMessage.message}
+                </div>
+              )}
+              {showMessage2.show && (
+                <div
+                  role="alert"
+                  className={`alert ${
+                    showMessage2.error ? 'alert-danger' : 'alert-info'
+                  } alert-dismissible`}
+                >
+                  <div
+                    dangerouslySetInnerHTML={{ __html: showMessage2.message }}
+                  />
+                </div>
+              )}
+              <h3 className="text-center">LOGIN</h3>
+              <div className="form-group">
+                <label>Email</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  placeholder="Masukkan email anda ..."
+                  value={data.email}
+                  onChange={(e) => HandleChange(e.target.value, 'email')}
                 />
               </div>
-            )}
-            <h3 className="text-center">LOGIN</h3>
-            <div className="form-group">
-              <label>Email</label>
-              <input
-                type="text"
-                className="form-control"
-                placeholder="Masukkan email anda ..."
-                value={data.email}
-                onChange={(e) => HandleChange(e.target.value, 'email')}
-              />
-            </div>
-            <div className="form-group mb-3">
-              <label>Password</label>
-              <input
-                type="password"
-                className="form-control"
-                placeholder="Masukkan password anda ..."
-                value={data.password}
-                onChange={(e) => HandleChange(e.target.value, 'password')}
-              />
-            </div>
-            <div className="text-left form-group">
-              <button
-                className="btn btn-block"
-                disabled={!data.email || !data.password || isLoading}
-                onClick={() => HandleSubmit()}
-              >
-                {isLoading ? <PulseLoader size={5} color={`#fff`} /> : `Login`}
-              </button>
-            </div>
-            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-              <span className="small">
-                Belum punya akun? <a href={`/register`}>Registrasi Sekarang</a>
-              </span>
-              <span className="small">
-                <a href={`/lupa-password`}>Lupa Password ?</a>
-              </span>
+              <div className="form-group mb-3">
+                <label>Password</label>
+                <input
+                  type="password"
+                  className="form-control"
+                  placeholder="Masukkan password anda ..."
+                  value={data.password}
+                  onChange={(e) => HandleChange(e.target.value, 'password')}
+                />
+              </div>
+              <div className="text-left form-group">
+                <button
+                  className="btn btn-block"
+                  disabled={!data.email || !data.password || isLoading}
+                  onClick={() => HandleSubmit()}
+                >
+                  {isLoading ? (
+                    <PulseLoader size={5} color={`#fff`} />
+                  ) : (
+                    `Login`
+                  )}
+                </button>
+              </div>
+              <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                <span className="small">
+                  Belum punya akun?{' '}
+                  <a href={`/register`}>Registrasi Sekarang</a>
+                </span>
+                <span className="small">
+                  <a href={`/lupa-password`}>Lupa Password ?</a>
+                </span>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+      <style>
+        {`
+          @media screen and (min-width: 768px) {
+            img.logo-ikapunija {
+              width: 380px;
+            }
+          }
+        `}
+      </style>
+    </section>
   )
 }

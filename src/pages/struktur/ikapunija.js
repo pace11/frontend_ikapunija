@@ -59,8 +59,8 @@ export default function StrukturIkapunija() {
                         href="/#"
                         data-width="118"
                       >
-                        <i className="fab fa-instagram"></i>
-                        <span>Instagram</span>
+                        <i class="fas fa-globe"></i>
+                        <span>Explore More</span>
                       </a>
                     </div>
                   </div>
@@ -101,8 +101,8 @@ export default function StrukturIkapunija() {
                             href="/#"
                             data-width="118"
                           >
-                            <i className="fab fa-instagram"></i>
-                            <span>Instagram</span>
+                            <i class="fas fa-globe"></i>
+                            <span>Explore More</span>
                           </a>
                         </div>
                       </div>

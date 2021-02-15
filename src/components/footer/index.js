@@ -1,4 +1,5 @@
 import React from 'react'
+import json from '../../__json__'
 
 export default function Footer() {
   return (
@@ -48,6 +49,26 @@ export default function Footer() {
                       <li>
                         <a href={`/kontak-kami`}>Kontak Kami</a>
                       </li>
+                    </ul>
+                  </div>
+                </div>
+                <div className="col-lg-4 col-md-12 col-xs-12">
+                  <div className="widget">
+                    <div className="widget-title">Media Sosial</div>
+                    <ul className="list">
+                      {json.media_sosial
+                        .filter((item) => item.is_active)
+                        .map((item, idx) => (
+                          <li key={String(idx)}>
+                            <a
+                              className={`btn btn-block ${item.button}`}
+                              href={`${item.url}`}
+                              target="_blank"
+                            >
+                              <i class={`${item.icon}`}></i> {item.title}
+                            </a>
+                          </li>
+                        ))}
                     </ul>
                   </div>
                 </div>

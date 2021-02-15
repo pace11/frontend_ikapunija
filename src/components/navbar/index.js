@@ -181,7 +181,15 @@ export default function Navbar({ location }) {
                     <div className="slide-captions text-center text-light">
                       {item.banner_title && <h1>{item.banner_title}</h1>}
                       {item.banner_desc && <p>{item.banner_desc}</p>}
-                      {item.banner_link && <Link url={item.banner_link} />}
+                      {item.banner_link && (
+                        <a
+                          href={`${item.banner_link}`}
+                          className="btn"
+                          target="_blank"
+                        >
+                          EXPLORE MORE
+                        </a>
+                      )}
                     </div>
                   </div>
                 </div>

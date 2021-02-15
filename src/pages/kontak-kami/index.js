@@ -172,12 +172,14 @@ export default function KontakKami() {
               <div className="row">
                 <div className="col-lg-6">
                   <address>
-                    <i className="icon-mail"></i> ikapunija-info@gmail.com
+                    <i className="icon-mail"></i> ikapunija.2020@gmail.com
                   </address>
                 </div>
                 <div className="col-lg-6">
                   <address>
-                    <i className="icon-map-pin"></i> DKI Jakarta
+                    <i className="icon-map-pin"></i> Jl. Prof. DR. G.A.
+                    Siwabessy, Kukusan, Kecamatan Beji, Kota Depok, Jawa Barat
+                    16424
                   </address>
                 </div>
               </div>

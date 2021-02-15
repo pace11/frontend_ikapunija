@@ -105,6 +105,32 @@ const Data = {
       img_url: require('../assets/sponsor/PNJ.png').default,
     },
   ],
+  media_sosial: [
+    {
+      id: 1,
+      title: 'instagram',
+      icon: 'fab fa-instagram',
+      button: 'btn-instagram',
+      url: 'https://instagram.com/ikapunija?igshid=mkg2o8cdl6ee',
+      is_active: true,
+    },
+    {
+      id: 2,
+      title: 'youtube',
+      icon: 'fab fa-youtube',
+      button: 'btn-youtube',
+      url: 'https://youtube.com/channel/UCHVZ6WYZR_sREGdc8ibVcmA',
+      is_active: true,
+    },
+    {
+      id: 3,
+      title: 'facebook',
+      icon: 'fab fa-facebook',
+      button: 'btn-facebook',
+      url: 'https://www.facebook.com/ikapunija.depok',
+      is_active: true,
+    },
+  ],
 }
 
 export default Data
