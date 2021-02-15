@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.js": "/static/js/main.3640774a.chunk.js",
-    "main.js.map": "/static/js/main.3640774a.chunk.js.map",
+    "main.js": "/static/js/main.d1c066b3.chunk.js",
+    "main.js.map": "/static/js/main.d1c066b3.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.cfdc93b6.js",
     "runtime-main.js.map": "/static/js/runtime-main.cfdc93b6.js.map",
-    "static/js/2.6e45b92c.chunk.js": "/static/js/2.6e45b92c.chunk.js",
-    "static/js/2.6e45b92c.chunk.js.map": "/static/js/2.6e45b92c.chunk.js.map",
+    "static/js/2.67c15e76.chunk.js": "/static/js/2.67c15e76.chunk.js",
+    "static/js/2.67c15e76.chunk.js.map": "/static/js/2.67c15e76.chunk.js.map",
     "index.html": "/index.html",
-    "static/js/2.6e45b92c.chunk.js.LICENSE.txt": "/static/js/2.6e45b92c.chunk.js.LICENSE.txt",
+    "static/js/2.67c15e76.chunk.js.LICENSE.txt": "/static/js/2.67c15e76.chunk.js.LICENSE.txt",
     "static/media/2.jpg": "/static/media/2.2e570aea.jpg",
     "static/media/5.jpg": "/static/media/5.24b0ad50.jpg",
     "static/media/PNJ.png": "/static/media/PNJ.ad89cca0.png",
@@ -20,7 +20,7 @@
   },
   "entrypoints": [
     "static/js/runtime-main.cfdc93b6.js",
-    "static/js/2.6e45b92c.chunk.js",
-    "static/js/main.3640774a.chunk.js"
+    "static/js/2.67c15e76.chunk.js",
+    "static/js/main.d1c066b3.chunk.js"
   ]
 }
