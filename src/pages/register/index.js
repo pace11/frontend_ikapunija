@@ -230,13 +230,13 @@ export default function LoginSso() {
 
   return (
     <section
+      className="container-register"
       style={{
         backgroundImage: `url(${require('../../assets/img/2.jpg').default})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
-        overflowY: 'scroll',
-        height: '100vh',
+        maxHeight: '100vh',
       }}
     >
       <div
@@ -620,9 +620,7 @@ export default function LoginSso() {
                           <div className="form-group">
                             <label>
                               Nama Perusahaan/Bisnis{' '}
-                              <span className="text-danger txt-sm">
-                                *required
-                              </span>
+                              <span className="text-danger txt-sm">*</span>
                             </label>
                             <input
                               value={data.nama_profesi}
@@ -638,9 +636,7 @@ export default function LoginSso() {
                           <div className="form-group">
                             <label>
                               Jumlah Karyawan yang dimiliki{' '}
-                              <span className="text-danger txt-sm">
-                                *required
-                              </span>
+                              <span className="text-danger txt-sm">*</span>
                             </label>
                             <input
                               value={data.jumlah_pegawai}
@@ -656,9 +652,7 @@ export default function LoginSso() {
                           <div className="form-group">
                             <label>
                               Pendapatan{' '}
-                              <span className="text-danger txt-sm">
-                                *required
-                              </span>
+                              <span className="text-danger txt-sm">*</span>
                             </label>
                             <input
                               value={data.pendapatan}
@@ -677,9 +671,7 @@ export default function LoginSso() {
                           <div className="form-group">
                             <label>
                               Jabatan{' '}
-                              <span className="text-danger txt-sm">
-                                *required
-                              </span>
+                              <span className="text-danger txt-sm">*</span>
                             </label>
                             <input
                               value={data.nama_profesi}
@@ -694,9 +686,7 @@ export default function LoginSso() {
                           <div className="form-group">
                             <label>
                               Pendapatan{' '}
-                              <span className="text-danger txt-sm">
-                                *required
-                              </span>
+                              <span className="text-danger txt-sm">*</span>
                             </label>
                             <input
                               value={data.pendapatan}
@@ -822,6 +812,14 @@ export default function LoginSso() {
         `}
         </style>
       </div>
+      <style>
+        {`
+          .container-register {
+            overflow: hidden scroll;
+            white-space: nowrap;
+          }
+        `}
+      </style>
     </section>
   )
 }
