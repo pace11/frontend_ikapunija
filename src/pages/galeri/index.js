@@ -21,7 +21,10 @@ export default function Galeri() {
 
   return (
     <React.Fragment>
-      <section id="page-title">
+      <section
+        id="page-title"
+        data-bg-parallax={require('../../assets/img/5.jpg').default}
+      >
         <div className="container">
           <div className="row">
             <div className="content col-lg-12 col-md-12 col-xs-12">

@@ -2,7 +2,6 @@ import React from 'react'
 import { useRouteMatch } from 'react-router-dom'
 import { isLoggedIn, userLoggedOut, splitUsername } from '../../utils/helpers'
 import { ListBanner } from '../../api'
-import Link from '../link'
 import NavbarList from './navbar-list'
 
 export default function Navbar({ location }) {
@@ -186,6 +185,7 @@ export default function Navbar({ location }) {
                           href={`${item.banner_link}`}
                           className="btn"
                           target="_blank"
+                          rel="noreferrer"
                         >
                           EXPLORE MORE
                         </a>

@@ -3,7 +3,10 @@ import React from 'react'
 export default function Sejarah() {
   return (
     <React.Fragment>
-      <section id="page-title">
+      <section
+        id="page-title"
+        data-bg-parallax={require('../../assets/img/5.jpg').default}
+      >
         <div className="container">
           <div className="page-title">
             <h1>

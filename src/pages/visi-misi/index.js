@@ -3,10 +3,15 @@ import React from 'react'
 export default function VisiMisi() {
   return (
     <React.Fragment>
-      <section id="page-title">
+      <section
+        id="page-title"
+        data-bg-parallax={require('../../assets/img/5.jpg').default}
+      >
         <div className="container">
           <div className="page-title">
-            <h1>Visi & Misi</h1>
+            <h1>
+              <i class="fas fa-hands-helping"></i> Visi & Misi
+            </h1>
           </div>
           <div className="breadcrumb">
             <ul>
@@ -14,7 +19,9 @@ export default function VisiMisi() {
                 <a href="/">Beranda</a>
               </li>
               <li className="active">
-                <a href="/visi-misi">Visi & Misi</a>
+                <a href="/visi-misi">
+                  <i class="fas fa-hands-helping"></i> Visi & Misi
+                </a>
               </li>
             </ul>
           </div>

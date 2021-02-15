@@ -66,7 +66,9 @@ export default function KontakKami() {
       >
         <div className="container">
           <div className="page-title">
-            <h1>Kontak Kami</h1>
+            <h1>
+              <i class="fas fa-phone"></i> Kontak Kami
+            </h1>
           </div>
           <div className="breadcrumb">
             <ul>
@@ -74,7 +76,9 @@ export default function KontakKami() {
                 <a href="/">Beranda</a>
               </li>
               <li className="active">
-                <a href="/kontak-kami">Kontak Kami</a>
+                <a href="/kontak-kami">
+                  <i class="fas fa-phone"></i> Kontak Kami
+                </a>
               </li>
             </ul>
           </div>

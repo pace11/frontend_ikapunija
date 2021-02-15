@@ -64,6 +64,7 @@ export default function Footer() {
                               className={`btn btn-block ${item.button}`}
                               href={`${item.url}`}
                               target="_blank"
+                              rel="noreferrer"
                             >
                               <i class={`${item.icon}`}></i> {item.title}
                             </a>

@@ -325,7 +325,7 @@ export default function LoginSso() {
                           onChange={(e) => HandleChangeImage(e)}
                         />
                         {data && data.foto_profil && (
-                          <a
+                          <span
                             className="text-danger"
                             style={{
                               position: 'absolute',
@@ -338,7 +338,7 @@ export default function LoginSso() {
                           >
                             <i className="icon-trash"></i>
                             hapus
-                          </a>
+                          </span>
                         )}
                       </div>
                     </div>
@@ -357,7 +357,6 @@ export default function LoginSso() {
                           placeholder="Masukkan nama alumni ..."
                           className="form-control"
                         />
-                        <span className="text-danger txt-sm">required</span>
                       </div>
                       <div className="form-group">
                         <label>
@@ -372,7 +371,6 @@ export default function LoginSso() {
                           placeholder="Masukkan email aktif ..."
                           className="form-control"
                         />
-                        <span className="text-danger txt-sm">required</span>
                       </div>
                     </div>
                   </div>
@@ -391,7 +389,6 @@ export default function LoginSso() {
                           placeholder="Masukkan password ..."
                           className="form-control"
                         />
-                        <span className="text-danger txt-sm">required</span>
                       </div>
                     </div>
                     <div className="col-md-6">
@@ -409,12 +406,10 @@ export default function LoginSso() {
                           placeholder="Masukkan konfirmasi password ..."
                           className="form-control"
                         />
-                        {confirmPassword.error ? (
+                        {confirmPassword.error && (
                           <div className="is-invalid">
                             Konfirmasi password harus sama dengan password
                           </div>
-                        ) : (
-                          <span className="text-danger txt-sm">required</span>
                         )}
                       </div>
                     </div>
@@ -434,7 +429,6 @@ export default function LoginSso() {
                           }
                           value={data.alamat}
                         />
-                        <span className="text-danger txt-sm">required</span>
                       </div>
                     </div>
                   </div>
@@ -518,7 +512,6 @@ export default function LoginSso() {
                               </option>
                             ))}
                         </select>
-                        <span className="text-danger txt-sm">required</span>
                       </div>
                     </div>
                     <div className="col-md-6">
@@ -552,8 +545,6 @@ export default function LoginSso() {
                               ))}
                           </select>
                         )}
-
-                        <span className="text-danger txt-sm">required</span>
                       </div>
                     </div>
                   </div>
@@ -582,7 +573,6 @@ export default function LoginSso() {
                               </option>
                             ))}
                         </select>
-                        <span className="text-danger txt-sm">required</span>
                       </div>
                     </div>
                     <div className="col-md-6">
@@ -622,7 +612,6 @@ export default function LoginSso() {
                               </option>
                             ))}
                         </select>
-                        <span className="text-danger txt-sm">required</span>
                       </div>
                     </div>
                     <div className="col-md-6">
@@ -644,7 +633,6 @@ export default function LoginSso() {
                               placeholder="Nama Perusahaan/Bisnis"
                               className="form-control"
                             />
-                            <span className="text-danger txt-sm">required</span>
                           </div>
 
                           <div className="form-group">
@@ -663,7 +651,6 @@ export default function LoginSso() {
                               placeholder="Jumlah Karyawan yang dimiliki"
                               className="form-control"
                             />
-                            <span className="text-danger txt-sm">required</span>
                           </div>
 
                           <div className="form-group">
@@ -682,7 +669,6 @@ export default function LoginSso() {
                               placeholder="Pendapatan"
                               className="form-control"
                             />
-                            <span className="text-danger txt-sm">required</span>
                           </div>
                         </div>
                       )}
@@ -704,7 +690,6 @@ export default function LoginSso() {
                               placeholder="Jabatan"
                               className="form-control"
                             />
-                            <span className="text-danger txt-sm">required</span>
                           </div>
                           <div className="form-group">
                             <label>
@@ -722,7 +707,6 @@ export default function LoginSso() {
                               placeholder="Pendapatan"
                               className="form-control"
                             />
-                            <span className="text-danger txt-sm">required</span>
                           </div>
                         </div>
                       )}
@@ -742,12 +726,10 @@ export default function LoginSso() {
                           placeholder="Masukkan 16 digit NIK ..."
                           className="form-control"
                         />
-                        {!validNumber.nik && data.nik ? (
+                        {!validNumber.nik && data.nik && (
                           <div id="txtName-error" className="is-invalid">
                             Harus number dengan jumlah 16 digit
                           </div>
-                        ) : (
-                          <span className="text-danger txt-sm">required</span>
                         )}
                       </div>
                     </div>
@@ -766,7 +748,12 @@ export default function LoginSso() {
                           placeholder="Upload Foto KTP"
                           className="form-control"
                         />
-                        <span className="text-danger txt-sm">required</span>
+                        <span
+                          className="text-danger"
+                          style={{ fontSize: '12px' }}
+                        >
+                          * required
+                        </span>
                       </div>
                     </div>
                   </div>
