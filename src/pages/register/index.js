@@ -236,7 +236,8 @@ export default function LoginSso() {
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
-        maxHeight: '100vh',
+        overflow: 'hidden scroll',
+        height: '100vh',
       }}
     >
       <div
@@ -257,6 +258,7 @@ export default function LoginSso() {
           <div className="text-center mb-3">
             <a href="/" className="logo">
               <img
+                className="logo-ikapunija"
                 src={require('../../assets/img/logo-ika-putih.png').default}
                 alt="ikapunija logo"
                 width="300px"
@@ -817,6 +819,11 @@ export default function LoginSso() {
           .container-register {
             overflow: hidden scroll;
             white-space: nowrap;
+          }
+          @media screen and (min-width: 768px) {
+            img.logo-ikapunija {
+              width: 380px;
+            }
           }
         `}
       </style>

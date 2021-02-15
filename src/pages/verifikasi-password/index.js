@@ -90,158 +90,193 @@ export default function VerifikasiPasswordContainer(props) {
   }
 
   return (
-    <div className="container">
-      <div>
-        <div className="text-center mb-3">
-          <a href="/" className="logo">
-            <img
-              src={require('../../assets/img/logo-ika-putih.png').default}
-              alt="ikapunija logo"
-              width="300px"
-            />
-          </a>
-        </div>
-        {step === 1 ? (
-          <div className="row">
-            <div className="col-lg-5 center p-50 background-white b-r-6">
-              {showMessage.show && (
-                <div
-                  role="alert"
-                  className={`alert ${
-                    showMessage.error ? 'alert-danger' : 'alert-info'
-                  } alert-dismissible`}
-                >
-                  <strong>
-                    <i className="fa fa-info-circle"></i>
-                  </strong>{' '}
-                  {showMessage.message}
-                </div>
-              )}
-              <h3 className="text-center">VERIFIKASI PASSWORD</h3>
-              <div className="form-group mb-3">
-                <div
-                  role="alert"
-                  className="alert alert-info alert-dismissible"
-                >
-                  <strong>
-                    <i className="fa fa-info-circle"></i> Info!
-                  </strong>{' '}
-                  Silahkan masukkan Kode Verifikasi yang telah dikirim melalui
-                  email. jika kode expired atau gagal diproses, kembali ke
-                  halaman Lupa Password untuk mendapatkan Kode Verifikasi yang
-                  baru.
-                </div>
-                <label>Email</label>
-                <input
-                  type="email"
-                  className="form-control"
-                  placeholder="Masukkan email anda ..."
-                  value={data.email}
-                  onChange={(e) => HandleChange(e.target.value, 'email')}
-                />
-              </div>
-              <div className="form-group mb-3">
-                <label>Kode Verifikasi</label>
-                <input
-                  type="number"
-                  className="form-control"
-                  placeholder="Masukkan kode verifikasi anda ..."
-                  value={data.verify_code}
-                  onChange={(e) => HandleChange(e.target.value, 'verify_code')}
-                />
-              </div>
-              <div className="text-left form-group">
-                <button
-                  className="btn btn-block"
-                  disabled={!data.email || !data.verify_code || isLoading}
-                  onClick={() => HandleSubmit(1)}
-                >
-                  {isLoading ? (
-                    <PulseLoader size={5} color={`#fff`} />
-                  ) : (
-                    `Kirim`
-                  )}
-                </button>
-              </div>
-              <p className="small">
-                <a href={`/lupa-password`}>Lupa Password ?</a>
-              </p>
-            </div>
+    <section
+      style={{
+        backgroundImage: `url(${require('../../assets/img/2.jpg').default})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+        overflow: 'hidden scroll',
+        height: '100vh',
+      }}
+    >
+      <div
+        style={{
+          position: 'fixed',
+          backgroundColor: '#27bebe',
+          opacity: '0.3',
+          top: 0,
+          bottom: 0,
+          left: 0,
+          right: 0,
+          zIndex: '-1',
+        }}
+      ></div>
+      <div className="container">
+        <div>
+          <div className="text-center mb-3">
+            <a href="/" className="logo">
+              <img
+                className="logo-ikapunija"
+                src={require('../../assets/img/logo-ika-putih.png').default}
+                alt="ikapunija logo"
+                width="300px"
+              />
+            </a>
           </div>
-        ) : (
-          <div className="row">
-            <div className="col-lg-5 center p-50 background-white b-r-6">
-              {showMessageS2.show && (
-                <div>
+          {step === 1 ? (
+            <div className="row">
+              <div className="col-lg-5 center p-50 background-white b-r-6">
+                {showMessage.show && (
                   <div
                     role="alert"
                     className={`alert ${
-                      showMessageS2.error ? 'alert-danger' : 'alert-info'
+                      showMessage.error ? 'alert-danger' : 'alert-info'
                     } alert-dismissible`}
                   >
                     <strong>
                       <i className="fa fa-info-circle"></i>
                     </strong>{' '}
-                    {showMessageS2.message}
-                  </div>
-                  <div>
-                    <BounceLoader size={20} color={`#27bebe`} />
-                    <p className="text-center">
-                      Segera diarahkan ke <a href="/login">Login</a> dalam 3
-                      detik
-                    </p>
-                  </div>
-                </div>
-              )}
-              <h3 className="text-center">PASSWORD BARU</h3>
-              <div className="form-group mb-3">
-                <label>Password Baru</label>
-                <input
-                  type="password"
-                  className="form-control"
-                  placeholder="Masukkan password baru ..."
-                  value={data.password}
-                  onChange={(e) => HandleChange(e.target.value, 'password')}
-                />
-              </div>
-              <div className="form-group mb-3">
-                <label>Konfirmasi Password Baru</label>
-                <input
-                  type="password"
-                  className="form-control"
-                  placeholder="Masukkan konfirmasi password baru ..."
-                  value={data.cPassword}
-                  onChange={(e) => HandleChange(e.target.value, 'cPassword')}
-                  onKeyUp={(e) => HandleKeyUp(e.target.value)}
-                />
-                {invalidCPassword && data.cPassword && (
-                  <div id="txtName-error" className="is-invalid">
-                    Konfirmasi Password harus sama dengan password
+                    {showMessage.message}
                   </div>
                 )}
-              </div>
-              <div className="text-left form-group">
-                <button
-                  className="btn btn-block"
-                  disabled={
-                    !data.password ||
-                    !data.cPassword ||
-                    invalidCPassword ||
-                    isLoadingS2
-                  }
-                  onClick={() => HandleSubmit(2)}
-                >
-                  {isLoadingS2 ? (
-                    <PulseLoader size={5} color={`#fff`} />
-                  ) : (
-                    `Kirim`
-                  )}
-                </button>
+                <h3 className="text-center">VERIFIKASI PASSWORD</h3>
+                <div className="form-group mb-3">
+                  <div
+                    role="alert"
+                    className="alert alert-info alert-dismissible"
+                  >
+                    <strong>
+                      <i className="fa fa-info-circle"></i> Info!
+                    </strong>{' '}
+                    Silahkan masukkan Kode Verifikasi yang telah dikirim melalui
+                    email. jika kode expired atau gagal diproses, kembali ke
+                    halaman Lupa Password untuk mendapatkan Kode Verifikasi yang
+                    baru.
+                  </div>
+                  <label>Email</label>
+                  <input
+                    type="email"
+                    className="form-control"
+                    placeholder="Masukkan email anda ..."
+                    value={data.email}
+                    onChange={(e) => HandleChange(e.target.value, 'email')}
+                  />
+                </div>
+                <div className="form-group mb-3">
+                  <label>Kode Verifikasi</label>
+                  <input
+                    type="number"
+                    className="form-control"
+                    placeholder="Masukkan kode verifikasi anda ..."
+                    value={data.verify_code}
+                    onChange={(e) =>
+                      HandleChange(e.target.value, 'verify_code')
+                    }
+                  />
+                </div>
+                <div className="text-left form-group">
+                  <button
+                    className="btn btn-block"
+                    disabled={!data.email || !data.verify_code || isLoading}
+                    onClick={() => HandleSubmit(1)}
+                  >
+                    {isLoading ? (
+                      <PulseLoader size={5} color={`#fff`} />
+                    ) : (
+                      `Kirim`
+                    )}
+                  </button>
+                </div>
+                <p className="small">
+                  <a href={`/lupa-password`}>Lupa Password ?</a>
+                </p>
               </div>
             </div>
-          </div>
-        )}
+          ) : (
+            <div className="row">
+              <div className="col-lg-5 center p-50 background-white b-r-6">
+                {showMessageS2.show && (
+                  <div>
+                    <div
+                      role="alert"
+                      className={`alert ${
+                        showMessageS2.error ? 'alert-danger' : 'alert-info'
+                      } alert-dismissible`}
+                    >
+                      <strong>
+                        <i className="fa fa-info-circle"></i>
+                      </strong>{' '}
+                      {showMessageS2.message}
+                    </div>
+                    <div>
+                      <BounceLoader size={20} color={`#27bebe`} />
+                      <p className="text-center">
+                        Segera diarahkan ke <a href="/login">Login</a> dalam 3
+                        detik
+                      </p>
+                    </div>
+                  </div>
+                )}
+                <h3 className="text-center">PASSWORD BARU</h3>
+                <div className="form-group mb-3">
+                  <label>Password Baru</label>
+                  <input
+                    type="password"
+                    className="form-control"
+                    placeholder="Masukkan password baru ..."
+                    value={data.password}
+                    onChange={(e) => HandleChange(e.target.value, 'password')}
+                  />
+                </div>
+                <div className="form-group mb-3">
+                  <label>Konfirmasi Password Baru</label>
+                  <input
+                    type="password"
+                    className="form-control"
+                    placeholder="Masukkan konfirmasi password baru ..."
+                    value={data.cPassword}
+                    onChange={(e) => HandleChange(e.target.value, 'cPassword')}
+                    onKeyUp={(e) => HandleKeyUp(e.target.value)}
+                  />
+                  {invalidCPassword && data.cPassword && (
+                    <div id="txtName-error" className="is-invalid">
+                      Konfirmasi Password harus sama dengan password
+                    </div>
+                  )}
+                </div>
+                <div className="text-left form-group">
+                  <button
+                    className="btn btn-block"
+                    disabled={
+                      !data.password ||
+                      !data.cPassword ||
+                      invalidCPassword ||
+                      isLoadingS2
+                    }
+                    onClick={() => HandleSubmit(2)}
+                  >
+                    {isLoadingS2 ? (
+                      <PulseLoader size={5} color={`#fff`} />
+                    ) : (
+                      `Kirim`
+                    )}
+                  </button>
+                </div>
+              </div>
+            </div>
+          )}
+        </div>
       </div>
-    </div>
+      <style>
+        {`
+          @media screen and (min-width: 768px) {
+            img.logo-ikapunija {
+              width: 380px;
+            }
+          }
+        `}
+      </style>
+    </section>
   )
 }
