@@ -49,7 +49,7 @@ export default function Pengumuman() {
         <div className="container">
           {isLoading ? (
             <LoadingComponent />
-          ) : data && !data.length ? (
+          ) : data && data.length ? (
             <div className="row">
               <div className="col-lg-12 col-md-12 col-xs-12">
                 <div id="blog" className="post-thumbnails">
