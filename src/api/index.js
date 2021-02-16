@@ -236,7 +236,7 @@ export const ListDetailPengumuman = async (id) => {
         notice_title: Data.judul,
         notice_subtitle: Data.review_singkat,
         notice_desc: Data.isi,
-        notice_img_url: `${imageBeritaAlumni}/${Data.foto}`,
+        notice_img_url: `${imagePengumuman}/${Data.foto}`,
         notice_category: Data.category,
         notice_priority: Data.priority,
         notice_date: Data.tanggal,
