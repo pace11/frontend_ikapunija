@@ -28,7 +28,7 @@ export default function Navbar({ location }) {
           await ListBanner().then((res) => {
             if (!unmounted) {
               window.localStorage.setItem('list_banner', JSON.stringify(res))
-              setBanner(res)
+              window.location.href = '/'
             }
           })
         }
