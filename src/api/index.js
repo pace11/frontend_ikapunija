@@ -8,6 +8,7 @@ import {
 import {
   imageBanner,
   imageBeritaAlumni,
+  imagePengumuman,
   imageAgenda,
   imageGallery,
   apiToken,
@@ -201,7 +202,7 @@ export const ListPengumuman = async () => {
           notice_id: item.id,
           notice_title: item.judul,
           notice_desc: item.review_singkat,
-          notice_img_url: `${imageBeritaAlumni}/${item.foto}`,
+          notice_img_url: `${imagePengumuman}/${item.foto}`,
           notice_category: item.category,
           notice_date: item.tanggal,
         }))
