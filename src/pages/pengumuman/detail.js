@@ -62,17 +62,19 @@ export default function BeritaAlumniDetail() {
                       <div className="row">
                         <div className="content col-lg-9">
                           <div>
-                            <div className="post-image">
-                              <a href="/#">
-                                <img
-                                  alt="img-pengumuman-detail"
-                                  src={data.notice_img_url}
-                                  onError={(e) => {
-                                    e.target.src =
-                                      'https://via.placeholder.com/150'
-                                  }}
-                                />
-                              </a>
+                            <div
+                              className="post-image"
+                              style={{ overflow: 'hidden' }}
+                            >
+                              <img
+                                alt="img-pengumuman-detail"
+                                src={data.notice_img_url}
+                                onError={(e) => {
+                                  e.target.src =
+                                    'https://via.placeholder.com/150'
+                                }}
+                                style={{ width: '100%', height: '100%' }}
+                              />
                             </div>
                             <div className="post-item-description">
                               <h2>{data.notice_title}</h2>
