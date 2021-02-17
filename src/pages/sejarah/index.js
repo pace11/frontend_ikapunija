@@ -31,7 +31,7 @@ export default function Sejarah() {
       <section id="page-content">
         <div className="container">
           <div className="d-flex row team-members m-b-40 justify-content-center">
-            <div className="col-lg-6 col-md-6 text-align-justify">
+            <div className="col-lg-8 col-md-8 text-align-justify">
               <p>
                 Dalam rangka memenuhi kebutuhan tenaga kerja profesional pada
                 level supervisi di industri, pemerintah Republik Indonesia

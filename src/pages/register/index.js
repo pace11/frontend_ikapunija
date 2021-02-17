@@ -671,10 +671,7 @@ export default function LoginSso() {
                       {isShow.form2 && (
                         <div className="form show">
                           <div className="form-group">
-                            <label>
-                              Jabatan{' '}
-                              <span className="text-danger txt-sm">*</span>
-                            </label>
+                            <label>Jabatan </label>
                             <input
                               value={data.nama_profesi}
                               onChange={(e) =>
@@ -763,7 +760,6 @@ export default function LoginSso() {
                         !data.angkatan ||
                         !data.negara_id ||
                         !data.profesi_id ||
-                        !data.nama_profesi ||
                         !data.jumlah_pegawai ||
                         !data.pendapatan ||
                         !data.foto_ktp ||
