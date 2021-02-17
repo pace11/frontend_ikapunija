@@ -35,26 +35,15 @@ export default function VisiMisi() {
                 <h2>Visi</h2>
               </div>
               <div className="col-lg-12 col-md-12 col-xs-12">
-                {/* <ol>
+                <ol>
                   <li>
-                    <h5>
-                      Qui amet tempor ex enim ex. Magna esse labore velit veniam
-                      commodo eu esse id eu exercitation excepteur.
-                    </h5>
+                    <p>
+                      IKAPUNIJA bersifat kekeluargaan, kerakyatan, keterbukaan,
+                      akuntabilitas dan berorientasi pengabdian masyarakat serta
+                      kepada almamater.
+                    </p>
                   </li>
-                  <li>
-                    <h5>
-                      Qui amet tempor ex enim ex. Magna esse labore velit veniam
-                      commodo eu esse id eu exercitation excepteur.
-                    </h5>
-                  </li>
-                  <li>
-                    <h5>
-                      Qui amet tempor ex enim ex. Magna esse labore velit veniam
-                      commodo eu esse id eu exercitation excepteur.
-                    </h5>
-                  </li>
-                </ol> */}
+                </ol>
               </div>
             </div>
             <div className="col-lg-6 col-md-12 col-xs-12">
@@ -62,32 +51,57 @@ export default function VisiMisi() {
                 <h2>Misi</h2>
               </div>
               <div className="col-lg-12 col-md-12 col-xs-12">
-                {/* <ol>
+                <ol>
                   <li>
-                    <h5>
-                      Qui amet tempor ex enim ex. Magna esse labore velit veniam
-                      commodo eu esse id eu exercitation excepteur.
-                    </h5>
+                    <p>
+                      Mempererat, membina dan mengembangkan semangat persatuan
+                      dan kekeluargan dengan memanfaatkan hubungan profesional
+                      dan fungsional diantara alumni Politeknik Universitas
+                      Indonesia dan Politeknik Negeri Jakarta dan keluarga,
+                      sehingga terwujud kesatuan alumni Politeknik Universitas
+                      Indonesia dan Politeknik Negeri Jakarta.
+                    </p>
                   </li>
                   <li>
-                    <h5>
-                      Qui amet tempor ex enim ex. Magna esse labore velit veniam
-                      commodo eu esse id eu exercitation excepteur.
-                    </h5>
+                    <p>
+                      Menumbuhkan, membina dan mengembangkan Alumni Politeknik
+                      Universitas Indonesia dan Politeknik Negeri Jakarta untuk
+                      memiliki kematangan berpikir, integritas sosial yang
+                      tinggi dan memiliki kepribadian yang berlandasakan iman
+                      dan takwa.
+                    </p>
                   </li>
                   <li>
-                    <h5>
-                      Qui amet tempor ex enim ex. Magna esse labore velit veniam
-                      commodo eu esse id eu exercitation excepteur.
-                    </h5>
+                    <p>
+                      Mendukung para anggotanya untuk mengembangkan dan
+                      mengimplementasikan ilmu pengetahuan, keterampilan dan
+                      pengamatan yang dimiliki anggotanya secara profesional
+                      guna dimanfaatkan bagi kepentingan para anggota,
+                      almamater, masyarakat, bangsa dan negara.
+                    </p>
                   </li>
                   <li>
-                    <h5>
-                      Qui amet tempor ex enim ex. Magna esse labore velit veniam
-                      commodo eu esse id eu exercitation excepteur.
-                    </h5>
+                    <p>
+                      Menghimpun informasi, sumber-sumber daya dan menjalankan
+                      upaya-upaya lain yang dapat digunakan untuk peningkatan
+                      pengetahuan, keterampilan dan kesejahteraan anggota serta
+                      masyarakat pada umumnya.
+                    </p>
                   </li>
-                </ol> */}
+                  <li>
+                    <p>
+                      Melaksanakan dan memelihara hubungan kerjasama dengan
+                      alamamater, organisasi-organisasi di lingkungan Politeknik
+                      Negeri Jakarta dan organisasi publik lainnya.
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      Memelihara serta menjunjung tinggi citra dan kehormatan
+                      IKAPUNIJA dan Politeknik Negeri Jakarta sebagai almamater.
+                    </p>
+                  </li>
+                </ol>
               </div>
             </div>
           </div>
