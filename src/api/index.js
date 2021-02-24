@@ -8,6 +8,7 @@ import {
 import {
   imageBanner,
   imageBeritaAlumni,
+  imageCdc,
   imagePengumuman,
   imageAgenda,
   imageGallery,
@@ -456,7 +457,7 @@ export const ListDetailCdc = async (id) => {
         cdc_id: Data.id,
         cdc_title: Data.judul,
         cdc_desc: Data.review_singkat,
-        cdc_img_url: `${imageBeritaAlumni}/${Data.foto}`,
+        cdc_img_url: `${imageCdc}/${Data.foto}`,
         cdc_category: Data.category,
         cdc_start_date: Data.start_date,
         cdc_end_date: Data.end_date,
