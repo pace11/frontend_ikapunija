@@ -55,7 +55,7 @@ export default function Cdc() {
               <div className="col-md-12 col-lg-12 col-xs-12">
                 <div
                   id="blog"
-                  className="post-3-columns"
+                  className="post-4-columns"
                   style={{ margin: '5px' }}
                 >
                   {data &&

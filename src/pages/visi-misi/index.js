@@ -10,7 +10,7 @@ export default function VisiMisi() {
         <div className="container">
           <div className="page-title">
             <h1>
-              <i class="fas fa-hands-helping"></i> Visi & Misi
+              <i classname="fas fa-hands-helping"></i> Visi & Misi
             </h1>
           </div>
           <div className="breadcrumb">
@@ -20,7 +20,7 @@ export default function VisiMisi() {
               </li>
               <li className="active">
                 <a href="/visi-misi">
-                  <i class="fas fa-hands-helping"></i> Visi & Misi
+                  <i classname="fas fa-hands-helping"></i> Visi & Misi
                 </a>
               </li>
             </ul>

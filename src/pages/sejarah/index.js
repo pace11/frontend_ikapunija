@@ -10,7 +10,7 @@ export default function Sejarah() {
         <div className="container">
           <div className="page-title">
             <h1>
-              <i class="fas fa-history"></i> Sejarah
+              <i classname="fas fa-history"></i> Sejarah
             </h1>
           </div>
           <div className="breadcrumb">
@@ -21,7 +21,7 @@ export default function Sejarah() {
               <li className="active">
                 <a href="/sejarah">
                   {' '}
-                  <i class="fas fa-history"></i> Sejarah
+                  <i classname="fas fa-history"></i> Sejarah
                 </a>
               </li>
             </ul>

@@ -66,7 +66,7 @@ export default function Footer() {
                               target="_blank"
                               rel="noreferrer"
                             >
-                              <i class={`${item.icon}`}></i> {item.title}
+                              <i className={`${item.icon}`}></i> {item.title}
                             </a>
                           </li>
                         ))}

@@ -81,7 +81,13 @@ export default function Galeri() {
                           }}
                         />
                       </a>
-                      <p style={{ marginBottom: '20px' }}>
+                      <p
+                        style={{
+                          margin: '5px 0 20px 0',
+                          fontWeight: '600',
+                          textAlign: 'center',
+                        }}
+                      >
                         {item.galeri_title}
                       </p>
                     </div>

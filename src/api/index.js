@@ -1,4 +1,3 @@
-import { urlApi } from '../const/env'
 import {
   WEB_HEADERS_GET,
   WEB_HEADERS_POST,
@@ -6,12 +5,15 @@ import {
   WEB_HEADERS_POST_LOGOUT,
 } from '../const/vars'
 import {
+  urlApi,
+  urlListRegion,
   imageBanner,
   imageBeritaAlumni,
   imageCdc,
   imagePengumuman,
   imageAgenda,
   imageGallery,
+  imageAlbum,
   apiToken,
 } from '../const/env'
 import Axios from 'axios'
@@ -22,7 +24,7 @@ export const ListRegion = async () => {
     const options = {
       method: 'GET',
     }
-    const result = await fetch('https://restcountries.eu/rest/v2/all', options)
+    const result = await fetch(`${urlListRegion}`, options)
     const { status } = result
     const response = result.json()
     if (status === 200) {
@@ -111,6 +113,26 @@ export const ListBanner = async () => {
       return bannerData
     } else {
       return 'undefined'
+    }
+  } catch (error) {
+    console.log('err ===>', error)
+  }
+}
+
+export const ListStruktur = async (params) => {
+  try {
+    const result = await Axios({
+      method: 'GET',
+      url: `${urlApi}/struktur`,
+      headers: {
+        apiToken: apiToken,
+        type: 'web',
+        typeLevel: params,
+      },
+    })
+    const { data } = result
+    if (data && data.StatusCode === 200) {
+      return data && data.Data
     }
   } catch (error) {
     console.log('err ===>', error)
@@ -349,7 +371,7 @@ export const ListGaleri = async () => {
         Data.map((item) => ({
           galeri_id: item.id,
           galeri_title: item.nama,
-          galeri_img_cover: `${imageGallery}/${item.logo}`,
+          galeri_img_cover: `${imageAlbum}/${item.logo}`,
         }))
       return {
         data: galeri,

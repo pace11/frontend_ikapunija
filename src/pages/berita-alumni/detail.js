@@ -39,7 +39,7 @@ export default function BeritaAlumniDetail() {
               </li>
               <li>
                 <a href="/berita-alumni">
-                  <i class="far fa-file-alt"></i> Berita Alumni
+                  <i className="far fa-file-alt"></i> Berita Alumni
                 </a>
               </li>
               <li className="active">
