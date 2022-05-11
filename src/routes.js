@@ -1,136 +1,44 @@
-import { Redirect } from 'react-router-dom'
-import { isLoggedIn } from './utils/helpers'
-import Layout from './layout'
-import LayoutSso from './layout/sso'
+import Layout from "./layout"
 
-// Route Views
-import Beranda from './pages/beranda'
-import BeritaAlumni from './pages/berita-alumni'
-import BeritaAlumniDetail from './pages/berita-alumni/detail'
-import Pengumuman from './pages/pengumuman'
-import PengumumanDetail from './pages/pengumuman/detail'
-import Agenda from './pages/agenda'
-import AgendaDetail from './pages/agenda/detail'
-import Galeri from './pages/galeri'
-import GaleriDetail from './pages/galeri/detail'
-import Cdc from './pages/cdc'
-import CdcDetail from './pages/cdc/detail'
-import KontakKami from './pages/kontak-kami'
-import StrukturIkapunija from './pages/struktur/ikapunija'
-import StrukturDpa from './pages/struktur/dpa'
-import VisiMisi from './pages/visi-misi'
-import Sejarah from './pages/sejarah'
-import Login from './pages/login'
-import Register from './pages/register'
-import LupaPassword from './pages/lupa-password'
-import VerifikasiPassword from './pages/verifikasi-password'
-import Profil from './pages/profil'
-import ProfilEdit from './pages/profil/edit-profil'
+// pages
+import Home from "./pages/home"
+import AboutUs from "./pages/about-us"
+import ContactUs from "./pages/contact-us"
+import Blog from "./pages/blog"
+import Program from "./pages/program"
+import News from "./pages/news"
 
 const Routes = [
   {
-    path: '/login',
-    exact: true,
-    layout: LayoutSso,
-    isLoggedIn: isLoggedIn(),
-    component: Login,
-    redirectComponent: () => <Redirect to="/" />,
-  },
-  { path: '/', exact: true, layout: Layout, component: Beranda },
-  {
-    path: '/berita-alumni',
+    path: "/",
     exact: true,
     layout: Layout,
-    component: BeritaAlumni,
+    component: Home,
   },
   {
-    path: '/berita-alumni/detail/:id',
-    exact: true,
+    path: "/about-us",
     layout: Layout,
-    component: BeritaAlumniDetail,
+    component: AboutUs,
   },
-  { path: '/pengumuman', exact: true, layout: Layout, component: Pengumuman },
   {
-    path: '/pengumuman/detail/:id',
-    exact: true,
+    path: "/contact-us",
     layout: Layout,
-    component: PengumumanDetail,
+    component: ContactUs,
   },
-  { path: '/agenda-program', exact: true, layout: Layout, component: Agenda },
   {
-    path: '/agenda-program/detail/:id',
-    exact: true,
+    path: "/blog",
     layout: Layout,
-    component: AgendaDetail,
+    component: Blog,
   },
-  { path: '/galeri', exact: true, layout: Layout, component: Galeri },
   {
-    path: '/galeri/detail/:id',
-    exact: true,
+    path: "/news",
     layout: Layout,
-    component: GaleriDetail,
+    component: News,
   },
-  { path: '/cdc', exact: true, layout: Layout, component: Cdc },
   {
-    path: '/cdc/detail/:id',
-    exact: true,
+    path: "/program",
     layout: Layout,
-    component: CdcDetail,
-  },
-  { path: '/kontak-kami', exact: true, layout: Layout, component: KontakKami },
-  {
-    path: '/tentang-kami/struktur-ikapunija',
-    exact: true,
-    layout: Layout,
-    component: StrukturIkapunija,
-  },
-  {
-    path: '/tentang-kami/struktur-dpa',
-    exact: true,
-    layout: Layout,
-    component: StrukturDpa,
-  },
-  {
-    path: '/profil',
-    exact: true,
-    layout: Layout,
-    component: Profil,
-  },
-  {
-    path: '/profil/edit',
-    exact: true,
-    layout: Layout,
-    component: ProfilEdit,
-  },
-  {
-    path: '/tentang-kami/visi-misi',
-    exact: true,
-    layout: Layout,
-    component: VisiMisi,
-  },
-  {
-    path: '/tentang-kami/sejarah',
-    exact: true,
-    layout: Layout,
-    component: Sejarah,
-  },
-  {
-    path: '/register',
-    exact: true,
-    layout: LayoutSso,
-    component: Register,
-  },
-  {
-    path: '/lupa-password',
-    exact: true,
-    layout: LayoutSso,
-    component: LupaPassword,
-  },
-  {
-    path: '/verifikasi-password',
-    exact: true,
-    layout: LayoutSso,
-    component: VerifikasiPassword,
+    component: Program,
   },
 ]
 

@@ -1,26 +1,19 @@
 {
   "files": {
-    "main.js": "/static/js/main.b4d1446a.chunk.js",
-    "main.js.map": "/static/js/main.b4d1446a.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.cfdc93b6.js",
-    "runtime-main.js.map": "/static/js/runtime-main.cfdc93b6.js.map",
-    "static/js/2.31836d87.chunk.js": "/static/js/2.31836d87.chunk.js",
-    "static/js/2.31836d87.chunk.js.map": "/static/js/2.31836d87.chunk.js.map",
+    "main.js": "/static/js/main.52009b8f.chunk.js",
+    "main.js.map": "/static/js/main.52009b8f.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.68421429.js",
+    "runtime-main.js.map": "/static/js/runtime-main.68421429.js.map",
+    "static/js/2.cbb61756.chunk.js": "/static/js/2.cbb61756.chunk.js",
+    "static/js/2.cbb61756.chunk.js.map": "/static/js/2.cbb61756.chunk.js.map",
     "index.html": "/index.html",
-    "static/js/2.31836d87.chunk.js.LICENSE.txt": "/static/js/2.31836d87.chunk.js.LICENSE.txt",
-    "static/media/2.jpg": "/static/media/2.2e570aea.jpg",
-    "static/media/5.jpg": "/static/media/5.24b0ad50.jpg",
-    "static/media/PNJ.png": "/static/media/PNJ.ad89cca0.png",
-    "static/media/YPNJ.png": "/static/media/YPNJ.e5b5bc31.png",
-    "static/media/banner_2.png": "/static/media/banner_2.5a81b0fd.png",
-    "static/media/empty-user.png": "/static/media/empty-user.16b74247.png",
-    "static/media/logo-ika-hitam.png": "/static/media/logo-ika-hitam.ec9ca717.png",
-    "static/media/logo-ika-port.png": "/static/media/logo-ika-port.3d9cc2c4.png",
-    "static/media/logo-ika-putih.png": "/static/media/logo-ika-putih.4d8ab414.png"
+    "static/js/2.cbb61756.chunk.js.LICENSE.txt": "/static/js/2.cbb61756.chunk.js.LICENSE.txt",
+    "static/media/logo.png": "/static/media/logo.fded8b82.png",
+    "static/media/photo-1.jpg": "/static/media/photo-1.f1f50d26.jpg"
   },
   "entrypoints": [
-    "static/js/runtime-main.cfdc93b6.js",
-    "static/js/2.31836d87.chunk.js",
-    "static/js/main.b4d1446a.chunk.js"
+    "static/js/runtime-main.68421429.js",
+    "static/js/2.cbb61756.chunk.js",
+    "static/js/main.52009b8f.chunk.js"
   ]
 }
